@@ -1,659 +1,286 @@
 <!doctype html>
-<html lang="id">
+<html lang="id" class="h-full">
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal Berita Seputar Kesehatan ✨</title>
+  <title>Berita Farmasi</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script async src="https://cse.google.com/cse.js?cx=5283c6d15819e488d"></script>
   <script src="/_sdk/element_sdk.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=DM+Sans:wght@400;500&amp;display=swap" rel="stylesheet">
   <style>
-        body {
-            box-sizing: border-box;
-        }
-        
-        * {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .card-hover {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .card-hover:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 25px 50px -12px rgba(102, 126, 234, 0.25);
-        }
-
-        .card-hover:hover .card-image {
-            transform: scale(1.1);
-        }
-
-        .card-image {
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .shimmer {
-            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-            background-size: 200% 100%;
-            animation: shimmer 1.5s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-fadeInUp {
-            animation: fadeInUp 0.6s ease-out forwards;
-        }
-
-        @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(102, 126, 234, 0.3); }
-            50% { box-shadow: 0 0 40px rgba(102, 126, 234, 0.6); }
-        }
-
-        .pulse-glow {
-            animation: pulse-glow 2s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .float {
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes wave {
-            0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(20deg); }
-            75% { transform: rotate(-20deg); }
-        }
-
-        .wave {
-            display: inline-block;
-            animation: wave 2s ease-in-out infinite;
-        }
-
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            25% { transform: scale(1.2); }
-            50% { transform: scale(1); }
-        }
-
-        .heartbeat {
-            display: inline-block;
-            animation: heartbeat 1.5s ease-in-out infinite;
-        }
-
-        @keyframes sparkle {
-            0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
-            50% { transform: scale(1.3) rotate(180deg); opacity: 0.8; }
-        }
-
-        .sparkle {
-            display: inline-block;
-            animation: sparkle 2s ease-in-out infinite;
-        }
-
-        @keyframes bounce-gentle {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-
-        .bounce-gentle {
-            animation: bounce-gentle 2s ease-in-out infinite;
-        }
-
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        .btn-gradient {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            transition: all 0.3s ease;
-        }
-
-        .btn-gradient:hover {
-            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-            transform: translateX(5px);
-        }
-
-        .search-input:focus {
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
-        }
-
-        .bg-pattern {
-            background-color: #f8fafc;
-            background-image: 
-                radial-gradient(at 20% 30%, rgba(102, 126, 234, 0.1) 0px, transparent 50%),
-                radial-gradient(at 80% 70%, rgba(118, 75, 162, 0.1) 0px, transparent 50%),
-                radial-gradient(at 50% 50%, rgba(236, 72, 153, 0.05) 0px, transparent 50%);
-        }
-
-        .scrollbar-hide::-webkit-scrollbar {
-            display: none;
-        }
-
-        .scrollbar-hide {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-    </style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    .font-heading {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    
+    .font-body {
+      font-family: 'DM Sans', sans-serif;
+    }
+    
+    /* Custom Google Search Styling */
+    .gsc-control-cse {
+      background: transparent !important;
+      border: none !important;
+      padding: 0 !important;
+    }
+    
+    .gsc-search-box {
+      margin-bottom: 0 !important;
+    }
+    
+    .gsc-input-box {
+      border-radius: 50px !important;
+      border: 2px solid #e2e8f0 !important;
+      background: #ffffff !important;
+      padding: 8px 16px !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+      transition: all 0.3s ease !important;
+    }
+    
+    .gsc-input-box:hover,
+    .gsc-input-box:focus-within {
+      border-color: #10b981 !important;
+      box-shadow: 0 8px 30px rgba(16, 185, 129, 0.15) !important;
+    }
+    
+    .gsc-input {
+      padding: 10px 0 !important;
+      font-family: 'DM Sans', sans-serif !important;
+      font-size: 16px !important;
+    }
+    
+    .gsc-search-button {
+      margin-left: 12px !important;
+    }
+    
+    .gsc-search-button-v2 {
+      background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%) !important;
+      border-radius: 50px !important;
+      padding: 14px 28px !important;
+      border: none !important;
+      cursor: pointer !important;
+      transition: all 0.3s ease !important;
+    }
+    
+    .gsc-search-button-v2:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4) !important;
+    }
+    
+    .gsc-search-button-v2 svg {
+      fill: white !important;
+      width: 20px !important;
+      height: 20px !important;
+    }
+    
+    .gsc-results-wrapper-overlay,
+    .gsc-results-wrapper-visible {
+      background: #ffffff !important;
+      border-radius: 16px !important;
+      margin-top: 20px !important;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1) !important;
+    }
+    
+    .gsc-webResult.gsc-result {
+      padding: 16px !important;
+      border-bottom: 1px solid #f1f5f9 !important;
+    }
+    
+    .gs-title {
+      font-family: 'Space Grotesk', sans-serif !important;
+      font-size: 18px !important;
+      color: #059669 !important;
+    }
+    
+    .gs-snippet {
+      font-family: 'DM Sans', sans-serif !important;
+      color: #64748b !important;
+      line-height: 1.6 !important;
+    }
+    
+    .gsc-cursor-page {
+      background: #f1f5f9 !important;
+      border-radius: 8px !important;
+      padding: 8px 14px !important;
+      margin: 0 4px !important;
+      color: #475569 !important;
+    }
+    
+    .gsc-cursor-current-page {
+      background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%) !important;
+      color: white !important;
+    }
+    
+    /* Floating animation */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .floating {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(16, 185, 129, 0.5); }
+    }
+    
+    .pulse-glow {
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+    
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, #10b981 0%, #14b8a6 50%, #059669 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    /* Background pattern */
+    .bg-pattern {
+      background-image: 
+        radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(20, 184, 166, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(5, 150, 105, 0.05) 0%, transparent 40%);
+    }
+  </style>
   <style>@view-transition { navigation: auto; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
- <body class="bg-pattern min-h-full">
-  <div class="w-full h-full overflow-auto scrollbar-hide flex flex-col"><!-- Header -->
-   <header class="sticky top-0 z-50 glass-effect border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-     <div class="flex items-center justify-between h-16 sm:h-20"><!-- Logo -->
-      <div class="flex items-center gap-3">
-       <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center pulse-glow"><span class="text-white text-xl sm:text-2xl">📰</span>
-       </div>
-       <div>
-        <h1 id="site-title" class="text-lg sm:text-xl font-bold gradient-text">Portal Berita Seputar Kesehatan</h1>
-        <p class="text-xs text-gray-500 hidden sm:block">Berita Terkini ✨</p>
-       </div>
-      </div><!-- Stats -->
-      <div class="flex items-center gap-2 sm:gap-4"><button onclick="toggleDarkMode()" class="relative w-14 h-8 rounded-full bg-gradient-to-r from-yellow-400 to-orange-400 flex items-center transition-all duration-500 hover:scale-110 hover:shadow-lg overflow-hidden" id="dark-mode-toggle" title="Toggle mode malam">
-        <div class="absolute inset-0 bg-gradient-to-r from-indigo-900 to-purple-900 opacity-0 transition-opacity duration-500" id="dark-bg"></div>
-        <div class="relative w-6 h-6 bg-white rounded-full ml-1 transition-all duration-500 flex items-center justify-center shadow-md" id="toggle-circle"><span class="text-sm transition-all duration-500" id="mode-icon">☀️</span>
-        </div></button> <button onclick="refreshBerita()" class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center hover:scale-110 transition-transform duration-300 hover:shadow-lg" title="Refresh artikel baru">
-        <svg id="refresh-icon" class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-        </svg></button>
-       <div class="text-center px-3 py-1 rounded-xl bg-gradient-to-r from-indigo-50 to-purple-50 transition-colors duration-500" id="article-counter"><span id="article-count" class="text-lg sm:text-xl font-bold text-indigo-600">0</span>
-        <p class="text-xs text-gray-500">Artikel</p>
-       </div>
-       <div class="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center float"><span class="text-white text-lg">🌿</span>
-       </div>
-      </div>
+ <body class="h-full font-body">
+  <div id="app" class="h-full w-full bg-gradient-to-br from-emerald-50 via-white to-teal-50 bg-pattern overflow-auto"><!-- Decorative Elements -->
+   <div class="absolute top-10 left-10 w-20 h-20 bg-emerald-200 rounded-full opacity-40 blur-xl floating"></div>
+   <div class="absolute top-32 right-20 w-32 h-32 bg-teal-200 rounded-full opacity-30 blur-2xl floating" style="animation-delay: 1s;"></div>
+   <div class="absolute bottom-20 left-1/4 w-24 h-24 bg-green-200 rounded-full opacity-30 blur-xl floating" style="animation-delay: 0.5s;"></div><!-- Main Content -->
+   <div class="relative z-10 min-h-full flex flex-col items-center justify-start px-4 py-12"><!-- Logo & Title Section -->
+    <div class="text-center mb-10"><!-- Logo Icon -->
+     <div class="inline-flex items-center justify-center w-20 h-20 bg-white rounded-2xl shadow-lg mb-6 pulse-glow">
+      <svg class="w-12 h-12" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><!-- Medical Cross --> <rect x="10" y="4" width="4" height="16" rx="1" fill="url(#pharmaGradient1)" /> <rect x="4" y="10" width="16" height="4" rx="1" fill="url(#pharmaGradient2)" /> <!-- Outer Circle --> <circle cx="12" cy="12" r="10" stroke="url(#pharmaGradient3)" stroke-width="1.5" /> <defs>
+        <lineargradient id="pharmaGradient1" x1="10" y1="4" x2="14" y2="20">
+         <stop stop-color="#10b981" />
+         <stop offset="1" stop-color="#059669" />
+        </lineargradient>
+        <lineargradient id="pharmaGradient2" x1="4" y1="12" x2="20" y2="12">
+         <stop stop-color="#14b8a6" />
+         <stop offset="1" stop-color="#0d9488" />
+        </lineargradient>
+        <lineargradient id="pharmaGradient3" x1="2" y1="2" x2="22" y2="22">
+         <stop stop-color="#10b981" />
+         <stop offset="1" stop-color="#14b8a6" />
+        </lineargradient>
+       </defs>
+      </svg>
+     </div><!-- Title -->
+     <h1 id="site-title" class="font-heading text-4xl md:text-5xl font-bold gradient-text mb-3">Berita Farmasi</h1><!-- Tagline -->
+     <p id="tagline" class="text-slate-500 text-lg md:text-xl max-w-md mx-auto">Portal berita dan informasi terkini seputar dunia farmasi</p>
+    </div><!-- Search Container -->
+    <div class="w-full max-w-2xl bg-white/70 backdrop-blur-sm rounded-3xl p-6 md:p-8 shadow-xl border border-white/50"><!-- Google Custom Search -->
+     <div class="gcse-search"></div><!-- Quick Search Tags -->
+     <div class="mt-6 flex flex-wrap gap-2 justify-center"><span class="text-sm text-slate-400 mr-2">Populer:</span> <button onclick="searchFor('berita farmasi terbaru')" class="px-4 py-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium transition-colors"> 📰 Berita Terbaru </button> <button onclick="searchFor('regulasi farmasi')" class="px-4 py-1.5 bg-teal-50 hover:bg-teal-100 text-teal-700 rounded-full text-sm font-medium transition-colors"> 📋 Regulasi </button> <button onclick="searchFor('inovasi obat')" class="px-4 py-1.5 bg-green-50 hover:bg-green-100 text-green-700 rounded-full text-sm font-medium transition-colors"> 💡 Inovasi </button> <button onclick="searchFor('industri farmasi')" class="px-4 py-1.5 bg-lime-50 hover:bg-lime-100 text-lime-700 rounded-full text-sm font-medium transition-colors"> 🏭 Industri </button>
      </div>
-    </div>
-   </header><!-- Search Bar -->
-   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-    <div class="flex flex-col sm:flex-row items-center gap-3"><button onclick="back()" class="btn-gradient text-white px-6 py-3 rounded-full font-semibold flex items-center gap-2 hover:shadow-lg transition-all">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-      </svg><span>Kembali</span> </button>
-     <form onsubmit="cariBerita(event)" class="flex-1 flex gap-3">
-      <div class="relative flex-1"><input type="text" id="search-input" placeholder="Cari berita... (contoh: herbal, teknologi, olahraga)" class="w-full px-6 py-3 rounded-full border-2 border-indigo-200 focus:border-indigo-500 focus:outline-none search-input transition-all" value="herbal">
-       <svg class="w-5 h-5 text-gray-400 absolute right-6 top-1/2 transform -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-       </svg>
-      </div><button type="submit" class="btn-gradient text-white px-8 py-3 rounded-full font-semibold flex items-center gap-2 hover:shadow-lg transition-all whitespace-nowrap">
-       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-       </svg><span class="hidden sm:inline">Cari</span> </button>
-     </form>
-    </div>
-   </div><!-- Main Content -->
-   <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 w-full"><!-- Featured Section Title -->
-    <div class="flex items-center gap-3 mb-8">
-     <div class="w-1.5 h-8 rounded-full bg-gradient-to-b from-indigo-500 to-purple-600"></div>
-     <h2 class="text-2xl sm:text-3xl font-bold text-gray-800">Berita Terkini</h2>
-     <div class="flex-1 h-px bg-gradient-to-r from-indigo-200 to-transparent"></div>
-    </div><!-- News Grid -->
-    <div id="daftar-berita" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"><!-- Loading Skeleton -->
-     <div class="loading-skeleton">
-      <div class="bg-white rounded-3xl overflow-hidden shadow-lg">
-       <div class="shimmer h-48 w-full"></div>
-       <div class="p-5">
-        <div class="shimmer h-4 w-20 rounded mb-3"></div>
-        <div class="shimmer h-6 w-full rounded mb-2"></div>
-        <div class="shimmer h-6 w-3/4 rounded mb-4"></div>
-        <div class="shimmer h-4 w-full rounded mb-2"></div>
-        <div class="shimmer h-4 w-2/3 rounded"></div>
-       </div>
+    </div><!-- Features Section -->
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl w-full px-4">
+     <div class="bg-white/60 backdrop-blur-sm rounded-2xl p-5 text-center border border-white/50 hover:shadow-lg transition-shadow">
+      <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mx-auto mb-3"><span class="text-2xl">📰</span>
       </div>
+      <h3 class="font-heading font-semibold text-slate-700 mb-1">Terkini</h3>
+      <p class="text-slate-500 text-sm">Berita farmasi terbaru</p>
      </div>
-     <div class="loading-skeleton hidden sm:block">
-      <div class="bg-white rounded-3xl overflow-hidden shadow-lg">
-       <div class="shimmer h-48 w-full"></div>
-       <div class="p-5">
-        <div class="shimmer h-4 w-20 rounded mb-3"></div>
-        <div class="shimmer h-6 w-full rounded mb-2"></div>
-        <div class="shimmer h-6 w-3/4 rounded mb-4"></div>
-        <div class="shimmer h-4 w-full rounded mb-2"></div>
-        <div class="shimmer h-4 w-2/3 rounded"></div>
-       </div>
+     <div class="bg-white/60 backdrop-blur-sm rounded-2xl p-5 text-center border border-white/50 hover:shadow-lg transition-shadow">
+      <div class="w-12 h-12 bg-teal-100 rounded-xl flex items-center justify-center mx-auto mb-3"><span class="text-2xl">🔍</span>
       </div>
+      <h3 class="font-heading font-semibold text-slate-700 mb-1">Lengkap</h3>
+      <p class="text-slate-500 text-sm">Informasi komprehensif</p>
      </div>
-     <div class="loading-skeleton hidden lg:block">
-      <div class="bg-white rounded-3xl overflow-hidden shadow-lg">
-       <div class="shimmer h-48 w-full"></div>
-       <div class="p-5">
-        <div class="shimmer h-4 w-20 rounded mb-3"></div>
-        <div class="shimmer h-6 w-full rounded mb-2"></div>
-        <div class="shimmer h-6 w-3/4 rounded mb-4"></div>
-        <div class="shimmer h-4 w-full rounded mb-2"></div>
-        <div class="shimmer h-4 w-2/3 rounded"></div>
-       </div>
+     <div class="bg-white/60 backdrop-blur-sm rounded-2xl p-5 text-center border border-white/50 hover:shadow-lg transition-shadow">
+      <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-3"><span class="text-2xl">✓</span>
       </div>
+      <h3 class="font-heading font-semibold text-slate-700 mb-1">Terpercaya</h3>
+      <p class="text-slate-500 text-sm">Sumber akurat</p>
      </div>
-    </div><!-- Load More Button -->
-    <div id="load-more-container" class="flex justify-center mt-12 hidden"><button onclick="ambilBerita()" class="group flex items-center gap-3 px-8 py-4 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"> <span class="text-gray-700 font-semibold">Muat Ulang Berita</span>
-      <svg class="w-5 h-5 text-indigo-500 group-hover:rotate-180 transition-transform duration-500" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-      </svg></button>
-    </div>
-   </main><!-- Footer -->
-   <footer class="bg-gradient-to-r from-indigo-900 via-purple-900 to-indigo-900 text-white py-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-     <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-4">
-      <div class="flex items-center gap-3">
-       <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center bounce-gentle"><span class="text-xl wave">📰</span>
-       </div>
-       <div>
-        <p class="font-semibold">Portal Berita Seputar Kesehatan</p>
-        <p class="text-sm text-white/60">Berita Terkini</p>
-       </div>
-      </div>
-      <div class="flex items-center gap-2 text-white/60 text-sm"><span>Made with</span> <span class="text-red-400 heartbeat">❤️</span> <span>by lavandin</span> <span class="text-lg sparkle">✨</span>
-      </div>
-     </div>
-     <div class="border-t border-white/10 pt-4">
-      <p class="text-center text-white/50 text-sm">© 2024 Portal Berita Seputar Kesehatan. All rights reserved.</p>
-     </div>
-    </div>
-   </footer>
+    </div><!-- Footer -->
+    <footer class="mt-12 text-center text-slate-400 text-sm">
+     <p>Powered by Google Custom Search</p>
+    </footer>
+   </div>
   </div>
   <script>
-        // Default config
-        const defaultConfig = {
-            site_title: 'Portal Berita Seputar Kesehatan',
-            background_color: '#f8fafc',
-            primary_color: '#667eea',
-            text_color: '#1f2937',
-            card_color: '#ffffff',
-            accent_color: '#764ba2'
-        };
-
-        let config = { ...defaultConfig };
-        let currentQuery = 'herbal';
-        let isDarkMode = false;
-
-        // Toggle Dark Mode
-        function toggleDarkMode() {
-            isDarkMode = !isDarkMode;
-            const body = document.body;
-            const darkBg = document.getElementById('dark-bg');
-            const toggleCircle = document.getElementById('toggle-circle');
-            const modeIcon = document.getElementById('mode-icon');
-            const header = document.querySelector('header');
-            const footer = document.querySelector('footer');
-            const cards = document.querySelectorAll('.card-hover > div');
-            const searchInput = document.getElementById('search-input');
-            const articleCounter = document.getElementById('article-counter');
-            
-            if (isDarkMode) {
-                // Mode malam aktif
-                body.style.background = 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)';
-                darkBg.style.opacity = '1';
-                toggleCircle.style.transform = 'translateX(22px)';
-                modeIcon.textContent = '🌙';
-                
-                // Header dark mode
-                if (header) {
-                    header.style.background = 'rgba(20, 20, 40, 0.95)';
-                    header.style.borderBottomColor = 'rgba(255, 255, 255, 0.1)';
-                }
-                
-                // Search input dark mode
-                if (searchInput) {
-                    searchInput.style.background = 'rgba(255, 255, 255, 0.1)';
-                    searchInput.style.color = '#ffffff';
-                    searchInput.style.borderColor = 'rgba(102, 126, 234, 0.5)';
-                }
-                
-                // Article counter dark mode
-                if (articleCounter) {
-                    articleCounter.style.background = 'rgba(102, 126, 234, 0.2)';
-                }
-                
-                // Cards dark mode
-                cards.forEach(card => {
-                    card.style.background = 'rgba(30, 30, 50, 0.9)';
-                    card.style.borderColor = 'rgba(102, 126, 234, 0.3)';
-                    card.style.border = '1px solid rgba(102, 126, 234, 0.3)';
-                    
-                    // Update text colors in cards
-                    const title = card.querySelector('h3');
-                    const description = card.querySelector('p.text-gray-600');
-                    if (title) title.style.color = '#ffffff';
-                    if (description) description.style.color = '#cbd5e1';
-                });
-                
-                // Section title dark mode
-                const sectionTitle = document.querySelector('.text-gray-800');
-                if (sectionTitle) sectionTitle.style.color = '#ffffff';
-                
-            } else {
-                // Mode siang aktif
-                body.style.background = '';
-                body.className = 'bg-pattern min-h-full';
-                darkBg.style.opacity = '0';
-                toggleCircle.style.transform = 'translateX(0)';
-                modeIcon.textContent = '☀️';
-                
-                // Header light mode
-                if (header) {
-                    header.style.background = '';
-                    header.className = 'sticky top-0 z-50 glass-effect border-b border-gray-100';
-                    header.style.borderBottomColor = '';
-                }
-                
-                // Search input light mode
-                if (searchInput) {
-                    searchInput.style.background = '';
-                    searchInput.style.color = '';
-                    searchInput.style.borderColor = '';
-                }
-                
-                // Article counter light mode
-                if (articleCounter) {
-                    articleCounter.style.background = '';
-                }
-                
-                // Cards light mode
-                cards.forEach(card => {
-                    card.style.background = '';
-                    card.style.border = '';
-                    card.style.borderColor = '';
-                    
-                    const title = card.querySelector('h3');
-                    const description = card.querySelector('p.text-gray-600');
-                    if (title) title.style.color = '';
-                    if (description) description.style.color = '';
-                });
-                
-                // Section title light mode
-                const sectionTitle = document.querySelector('.text-gray-800');
-                if (sectionTitle) sectionTitle.style.color = '';
+    // Default configuration
+    const defaultConfig = {
+      site_title: 'Berita Farmasi',
+      tagline: 'Portal berita dan informasi terkini seputar dunia farmasi',
+      background_color: '#f0fdf4',
+      primary_color: '#10b981',
+      text_color: '#334155',
+      accent_color: '#14b8a6',
+      surface_color: '#ffffff'
+    };
+    
+    // Quick search function
+    function searchFor(query) {
+      const searchInput = document.querySelector('.gsc-input input');
+      if (searchInput) {
+        searchInput.value = query;
+        const searchButton = document.querySelector('.gsc-search-button-v2');
+        if (searchButton) {
+          searchButton.click();
+        }
+      }
+    }
+    
+    // Initialize Element SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (config) => {
+          // Update title
+          const titleEl = document.getElementById('site-title');
+          if (titleEl) {
+            titleEl.textContent = config.site_title || defaultConfig.site_title;
+          }
+          
+          // Update tagline
+          const taglineEl = document.getElementById('tagline');
+          if (taglineEl) {
+            taglineEl.textContent = config.tagline || defaultConfig.tagline;
+          }
+        },
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            {
+              get: () => config.background_color || defaultConfig.background_color,
+              set: (value) => window.elementSdk.setConfig({ background_color: value })
+            },
+            {
+              get: () => config.primary_color || defaultConfig.primary_color,
+              set: (value) => window.elementSdk.setConfig({ primary_color: value })
+            },
+            {
+              get: () => config.text_color || defaultConfig.text_color,
+              set: (value) => window.elementSdk.setConfig({ text_color: value })
             }
-        }
-
-        // Initialize Element SDK
-        if (window.elementSdk) {
-            window.elementSdk.init({
-                defaultConfig,
-                onConfigChange: async (newConfig) => {
-                    config = { ...defaultConfig, ...newConfig };
-                    
-                    // Update site title
-                    const titleEl = document.getElementById('site-title');
-                    if (titleEl) {
-                        titleEl.textContent = config.site_title || defaultConfig.site_title;
-                    }
-
-                    // Apply colors
-                    document.body.style.backgroundColor = config.background_color || defaultConfig.background_color;
-                },
-                mapToCapabilities: (cfg) => ({
-                    recolorables: [
-                        {
-                            get: () => cfg.background_color || defaultConfig.background_color,
-                            set: (value) => {
-                                cfg.background_color = value;
-                                window.elementSdk.setConfig({ background_color: value });
-                            }
-                        },
-                        {
-                            get: () => cfg.primary_color || defaultConfig.primary_color,
-                            set: (value) => {
-                                cfg.primary_color = value;
-                                window.elementSdk.setConfig({ primary_color: value });
-                            }
-                        },
-                        {
-                            get: () => cfg.text_color || defaultConfig.text_color,
-                            set: (value) => {
-                                cfg.text_color = value;
-                                window.elementSdk.setConfig({ text_color: value });
-                            }
-                        },
-                        {
-                            get: () => cfg.card_color || defaultConfig.card_color,
-                            set: (value) => {
-                                cfg.card_color = value;
-                                window.elementSdk.setConfig({ card_color: value });
-                            }
-                        },
-                        {
-                            get: () => cfg.accent_color || defaultConfig.accent_color,
-                            set: (value) => {
-                                cfg.accent_color = value;
-                                window.elementSdk.setConfig({ accent_color: value });
-                            }
-                        }
-                    ],
-                    borderables: [],
-                    fontEditable: undefined,
-                    fontSizeable: undefined
-                }),
-                mapToEditPanelValues: (cfg) => new Map([
-                    ['site_title', cfg.site_title || defaultConfig.site_title]
-                ])
-            });
-        }
-
-        // Fungsi cari berita
-        function cariBerita(event) {
-            event.preventDefault();
-            const searchInput = document.getElementById('search-input');
-            currentQuery = searchInput.value.trim() || 'herbal';
-            ambilBerita();
-        }
-
-        // Fungsi refresh berita
-        function refreshBerita() {
-            const refreshIcon = document.getElementById('refresh-icon');
-            
-            // Animasi rotasi icon
-            refreshIcon.style.transform = 'rotate(360deg)';
-            refreshIcon.style.transition = 'transform 0.6s ease';
-            
-            setTimeout(() => {
-                refreshIcon.style.transform = 'rotate(0deg)';
-                refreshIcon.style.transition = 'none';
-            }, 600);
-            
-            // Ambil berita baru
-            ambilBerita();
-        }
-
-        // Format tanggal
-        function formatTanggal(dateString) {
-            const options = { day: 'numeric', month: 'short', year: 'numeric' };
-            return new Date(dateString).toLocaleDateString('id-ID', options);
-        }
-
-        // Ambil berita dari API
-        async function ambilBerita() {
-            const apiKey = 'f73482e3bc0319bf1cfdbdc3b9fa911f';
-            const url = `https://gnews.io/api/v4/search?q=${encodeURIComponent(currentQuery)}&lang=id&max=12&sortby=publishedAt&apikey=${apiKey}`;
-            const kontainer = document.getElementById('daftar-berita');
-
-            // Show loading
-            kontainer.innerHTML = `
-                <div class="loading-skeleton">
-                    <div class="bg-white rounded-3xl overflow-hidden shadow-lg">
-                        <div class="shimmer h-48 w-full"></div>
-                        <div class="p-5">
-                            <div class="shimmer h-4 w-20 rounded mb-3"></div>
-                            <div class="shimmer h-6 w-full rounded mb-2"></div>
-                            <div class="shimmer h-6 w-3/4 rounded mb-4"></div>
-                            <div class="shimmer h-4 w-full rounded mb-2"></div>
-                            <div class="shimmer h-4 w-2/3 rounded"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="loading-skeleton hidden sm:block">
-                    <div class="bg-white rounded-3xl overflow-hidden shadow-lg">
-                        <div class="shimmer h-48 w-full"></div>
-                        <div class="p-5">
-                            <div class="shimmer h-4 w-20 rounded mb-3"></div>
-                            <div class="shimmer h-6 w-full rounded mb-2"></div>
-                            <div class="shimmer h-6 w-3/4 rounded mb-4"></div>
-                            <div class="shimmer h-4 w-full rounded mb-2"></div>
-                            <div class="shimmer h-4 w-2/3 rounded"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="loading-skeleton hidden lg:block">
-                    <div class="bg-white rounded-3xl overflow-hidden shadow-lg">
-                        <div class="shimmer h-48 w-full"></div>
-                        <div class="p-5">
-                            <div class="shimmer h-4 w-20 rounded mb-3"></div>
-                            <div class="shimmer h-6 w-full rounded mb-2"></div>
-                            <div class="shimmer h-6 w-3/4 rounded mb-4"></div>
-                            <div class="shimmer h-4 w-full rounded mb-2"></div>
-                            <div class="shimmer h-4 w-2/3 rounded"></div>
-                        </div>
-                    </div>
-                </div>
-            `;
-
-            try {
-                const response = await fetch(url);
-                const data = await response.json();
-
-                if (data.articles && data.articles.length > 0) {
-                    kontainer.innerHTML = '';
-
-                    // Shuffle berita
-                    const beritaAcak = data.articles.sort(() => Math.random() - 0.5);
-                    
-                    // Update article count
-                    document.getElementById('article-count').textContent = beritaAcak.length;
-
-                    beritaAcak.forEach((berita, index) => {
-                        const card = document.createElement('div');
-                        card.className = 'card-hover animate-fadeInUp';
-                        card.style.animationDelay = `${index * 0.1}s`;
-                        card.style.opacity = '0';
-
-                        const imageUrl = berita.image || '';
-                        const sourceName = berita.source?.name || 'Unknown';
-                        const publishDate = berita.publishedAt ? formatTanggal(berita.publishedAt) : '';
-
-                        card.innerHTML = `
-                            <div class="bg-white rounded-3xl overflow-hidden shadow-lg h-full flex flex-col">
-                                <div class="relative overflow-hidden h-48">
-                                    ${imageUrl ? `
-                                        <img 
-                                            src="${imageUrl}" 
-                                            alt="${berita.title}"
-                                            loading="lazy"
-                                            class="card-image w-full h-full object-cover"
-                                            onerror="this.parentElement.innerHTML='<div class=\\'w-full h-full bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center\\'><span class=\\'text-6xl\\'>📰</span></div>'"
-                                        >
-                                    ` : `
-                                        <div class="w-full h-full bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center">
-                                            <span class="text-6xl">📰</span>
-                                        </div>
-                                    `}
-                                    <div class="absolute top-4 left-4">
-                                        <span class="px-3 py-1.5 bg-white/90 backdrop-blur-sm rounded-full text-xs font-semibold text-indigo-600">
-                                            ${sourceName}
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="p-5 flex flex-col flex-grow">
-                                    <div class="flex items-center gap-2 text-xs text-gray-500 mb-3">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                                        </svg>
-                                        <span>${publishDate}</span>
-                                    </div>
-                                    <h3 class="text-lg font-bold text-gray-800 mb-3 line-clamp-2 hover:text-indigo-600 transition-colors">
-                                        ${berita.title}
-                                    </h3>
-                                    <p class="text-sm text-gray-600 mb-4 line-clamp-3 flex-grow">
-                                        ${berita.description || 'Tidak ada deskripsi tersedia.'}
-                                    </p>
-                                    <a 
-                                        href="${berita.url}" 
-                                        target="_blank" 
-                                        rel="noopener noreferrer"
-                                        class="btn-gradient inline-flex items-center gap-2 text-white px-5 py-2.5 rounded-xl text-sm font-semibold w-fit"
-                                    >
-                                        <span>Baca Selengkapnya</span>
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                        `;
-
-                        kontainer.appendChild(card);
-                    });
-
-                    // Show load more button
-                    document.getElementById('load-more-container').classList.remove('hidden');
-                } else {
-                    kontainer.innerHTML = `
-                        <div class="col-span-full flex flex-col items-center justify-center py-16">
-                            <div class="w-24 h-24 rounded-full bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center mb-6">
-                                <span class="text-5xl">😔</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-700 mb-2">Tidak Ada Berita Ditemukan</h3>
-                            <p class="text-gray-500 text-center max-w-md">
-                                Maaf, tidak ada berita untuk kata kunci "${currentQuery}". Coba kata kunci lain ya! 🌸
-                            </p>
-                        </div>
-                    `;
-                    document.getElementById('article-count').textContent = '0';
-                    document.getElementById('load-more-container').classList.add('hidden');
-                }
-            } catch (error) {
-                kontainer.innerHTML = `
-                    <div class="col-span-full flex flex-col items-center justify-center py-16">
-                        <div class="w-24 h-24 rounded-full bg-gradient-to-br from-red-100 to-orange-100 flex items-center justify-center mb-6">
-                            <span class="text-5xl">😵</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-700 mb-2">Ups! Terjadi Kesalahan</h3>
-                        <p class="text-gray-500 text-center max-w-md mb-6">
-                            Gagal mengambil data berita. Pastikan API key sudah benar dan koneksi internet stabil! 🌸
-                        </p>
-                        <button onclick="ambilBerita()" class="btn-gradient text-white px-6 py-3 rounded-xl font-semibold">
-                            Coba Lagi
-                        </button>
-                    </div>
-                `;
-                document.getElementById('article-count').textContent = '0';
-                document.getElementById('load-more-container').classList.add('hidden');
-            }
-        }
-
-        // Load berita saat halaman dimuat dengan keyword "herbal"
-        window.onload = ambilBerita;
-    </script>
-    <script>
-        function back() {
-            window.location.href = "try.html"
-        }
-        </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c65d822202c3e2a',t:'MTc2OTgyNzIyNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || 'Space Grotesk',
+            set: (value) => window.elementSdk.setConfig({ font_family: value })
+          },
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ['site_title', config.site_title || defaultConfig.site_title],
+          ['tagline', config.tagline || defaultConfig.tagline]
+        ])
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c76ae6334b15fb7',t:'MTc3MDAwMzc3NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
