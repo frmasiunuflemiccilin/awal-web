@@ -1,0 +1,124 @@
+css
+ {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f4f9f4; /* Hijau sangat muda biar seger */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10%;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 600;
+    color: #2d6a4f;
+}
+
+.logo span {
+    color: #52b788;
+}
+
+.navbar ul {
+    list-style: none;
+}
+
+.navbar ul li {
+    display: inline-block;
+    padding: 0 20px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #333;
+    transition: 0.3s;
+}
+
+.navbar ul li a:hover {
+    color: #52b788;
+}
+
+.hero {
+    height: 60vh;
+    background: linear-gradient(rgba(45, 106, 79, 0.7), rgba(45, 106, 79, 0.7)), url('https://images.unsplash.com/photo-1587854680352-936b22b91030?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+}
+
+.hero-content h1 {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+.hero-content p {
+    font-size: 28px;
+    color: rgb(170, 211, 235);
+}
+
+.btn {
+    padding: 12px 30px;
+    background-color: #52b788;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #40916c;
+}
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px 10%;
+}
+
+.card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    width: 30%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #2d6a4f;
+    color: white; 
+}
+.yesbro {
+    padding: 12px 30px;
+    background-color: #52b788;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    transition: 0.3s;
+}

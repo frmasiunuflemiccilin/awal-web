@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unukase Loading Screen</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    * {
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    @keyframes pulse-ring {
+      0% {
+        transform: scale(0.8);
+        opacity: 0.8;
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 0.3;
+      }
+      100% {
+        transform: scale(0.8);
+        opacity: 0.8;
+      }
+    }
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    
+    @keyframes shimmer {
+      0% {
+        background-position: -200% center;
+      }
+      100% {
+        background-position: 200% center;
+      }
+    }
+    
+    @keyframes dot-bounce {
+      0%, 80%, 100% {
+        transform: scale(0);
+        opacity: 0.5;
+      }
+      40% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+    
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    
+    @keyframes rotate-reverse {
+      from {
+        transform: rotate(360deg);
+      }
+      to {
+        transform: rotate(0deg);
+      }
+    }
+    
+    @keyframes orbit {
+      0% {
+        transform: rotate(0deg) translateX(75px) rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg) translateX(75px) rotate(-360deg);
+      }
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% {
+        opacity: 0.6;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.15);
+      }
+    }
+    
+    @keyframes sparkle {
+      0%, 100% {
+        opacity: 0;
+        transform: scale(0);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    .pulse-ring {
+      animation: pulse-ring 2s ease-in-out infinite;
+    }
+    
+    .float {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    .shimmer-text {
+      background: linear-gradient(90deg, #ffffff 0%, #86efac 50%, #ffffff 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 3s linear infinite;
+    }
+    
+    .dot {
+      animation: dot-bounce 1.4s ease-in-out infinite both;
+    }
+    
+    .dot:nth-child(1) { animation-delay: -0.32s; }
+    .dot:nth-child(2) { animation-delay: -0.16s; }
+    .dot:nth-child(3) { animation-delay: 0s; }
+    
+    .rotating-ring {
+      animation: rotate 4s linear infinite;
+    }
+    
+    .rotating-ring-reverse {
+      animation: rotate-reverse 6s linear infinite;
+    }
+    
+    .orbit-particle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      animation: orbit 3s linear infinite;
+    }
+    
+    .orbit-particle:nth-child(1) {
+      background: linear-gradient(135deg, #22c55e, #86efac);
+      box-shadow: 0 0 10px #22c55e;
+      animation-delay: 0s;
+    }
+    
+    .orbit-particle:nth-child(2) {
+      background: linear-gradient(135deg, #16a34a, #4ade80);
+      box-shadow: 0 0 10px #16a34a;
+      animation-delay: -1s;
+    }
+    
+    .orbit-particle:nth-child(3) {
+      background: linear-gradient(135deg, #86efac, #bbf7d0);
+      box-shadow: 0 0 10px #86efac;
+      animation-delay: -2s;
+    }
+    
+    .orbit-particle:nth-child(4) {
+      background: linear-gradient(135deg, #4ade80, #a7f3d0);
+      box-shadow: 0 0 10px #4ade80;
+      animation-delay: -2.5s;
+    }
+    
+    .pulse-glow {
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+    
+    .sparkle {
+      animation: sparkle 2s ease-in-out infinite;
+    }
+    
+    .glow {
+      filter: drop-shadow(0 0 25px rgba(134, 239, 172, 0.7)) drop-shadow(0 0 50px rgba(34, 197, 94, 0.4));
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full m-0 p-0">
+  <div id="app-wrapper" class="h-full w-full overflow-auto"><!-- Background with gradient -->
+   <div id="background" class="h-full w-full flex items-center justify-center relative" style="background: linear-gradient(135deg, #0a2e0a 0%, #0f4a0f 25%, #064e3b 50%, #0a3a2e 75%, #0f1f1a 100%);"><!-- Decorative elements -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+     <div class="absolute top-1/4 left-1/4 w-64 h-64 rounded-full opacity-20" style="background: radial-gradient(circle, #22c55e 0%, transparent 70%);"></div>
+     <div class="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full opacity-20" style="background: radial-gradient(circle, #16a34a 0%, transparent 70%);"></div>
+     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full opacity-10" style="background: radial-gradient(circle, #10b981 0%, transparent 80%);"></div>
+    </div><!-- Main loading content -->
+    <div class="relative z-10 flex flex-col items-center justify-center"><!-- Logo container with animations -->
+     <div class="relative float"><!-- Outer double rotating rings -->
+      <div class="absolute inset-0 flex items-center justify-center">
+       <svg class="rotating-ring" width="200" height="200" viewbox="0 0 200 200"><defs>
+         <lineargradient id="ringGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#22c55e;stop-opacity:0.9" />
+          <stop offset="50%" style="stop-color:#16a34a;stop-opacity:0.6" />
+          <stop offset="100%" style="stop-color:#22c55e;stop-opacity:0" />
+         </lineargradient>
+        </defs> <circle cx="100" cy="100" r="92" fill="none" stroke="url(#ringGradient1)" stroke-width="3" stroke-linecap="round" stroke-dasharray="120 400" />
+       </svg>
+      </div>
+      <div class="absolute inset-0 flex items-center justify-center">
+       <svg class="rotating-ring-reverse" width="220" height="220" viewbox="0 0 220 220"><defs>
+         <lineargradient id="ringGradient2" x1="100%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" style="stop-color:#86efac;stop-opacity:0.8" />
+          <stop offset="50%" style="stop-color:#4ade80;stop-opacity:0.5" />
+          <stop offset="100%" style="stop-color:#86efac;stop-opacity:0" />
+         </lineargradient>
+        </defs> <circle cx="110" cy="110" r="102" fill="none" stroke="url(#ringGradient2)" stroke-width="2" stroke-linecap="round" stroke-dasharray="80 500" />
+       </svg>
+      </div><!-- Orbiting particles -->
+      <div class="absolute inset-0 flex items-center justify-center">
+       <div class="relative w-0 h-0">
+        <div class="orbit-particle"></div>
+        <div class="orbit-particle"></div>
+        <div class="orbit-particle"></div>
+        <div class="orbit-particle"></div>
+       </div>
+      </div><!-- Pulse rings with glow -->
+      <div class="absolute inset-0 flex items-center justify-center">
+       <div class="w-48 h-48 rounded-full pulse-glow" style="background: radial-gradient(circle, rgba(34, 197, 94, 0.4) 0%, rgba(34, 197, 94, 0.1) 50%, transparent 70%);"></div>
+      </div>
+      <div class="absolute inset-0 flex items-center justify-center">
+       <div class="w-36 h-36 rounded-full pulse-glow" style="animation-delay: 0.5s; background: radial-gradient(circle, rgba(22, 163, 74, 0.5) 0%, rgba(22, 163, 74, 0.2) 50%, transparent 70%);"></div>
+      </div><!-- Sparkle effects at cardinal points -->
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full sparkle" style="background: radial-gradient(circle, #fff, #86efac); animation-delay: 0s;"></div>
+      <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full sparkle" style="background: radial-gradient(circle, #fff, #22c55e); animation-delay: 0.5s;"></div>
+      <div class="absolute left-0 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full sparkle" style="background: radial-gradient(circle, #fff, #16a34a); animation-delay: 1s;"></div>
+      <div class="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full sparkle" style="background: radial-gradient(circle, #fff, #4ade80); animation-delay: 1.5s;"></div><!-- Main logo -->
+      <div class="w-44 h-44 flex items-center justify-center glow">
+    <!-- Ganti src dengan link logo atau nama file logo Kakak -->
+    <img src="unukase.png" alt="Logo Baru" class="w-32 h-32 object-contain">
+</div>
+     </div><!-- Brand name -->
+     <h1 id="brand-name" class="mt-8 text-4xl font-bold tracking-wider shimmer-text" style="font-family: 'Orbitron', sans-serif;">UNUKASE</h1><!-- Tagline -->
+     <p id="tagline" class="mt-2 text-sm tracking-widest uppercase" style="color: #86efac;">Loading Experience</p><!-- Loading dots -->
+     <div class="flex space-x-2 mt-8">
+      <div class="dot w-3 h-3 rounded-full" style="background-color: #22c55e;"></div>
+      <div class="dot w-3 h-3 rounded-full" style="background-color: #22c55e;"></div>
+      <div class="dot w-3 h-3 rounded-full" style="background-color: #22c55e;"></div>
+     </div><!-- Progress bar -->
+     <div class="mt-6 w-48 h-1 rounded-full overflow-hidden" style="background-color: rgba(34, 197, 94, 0.2);">
+      <div class="h-full rounded-full" style="background: linear-gradient(90deg, #166534, #22c55e, #86efac); animation: shimmer 2s linear infinite; background-size: 200% auto; width: 100%;"></div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+    const defaultConfig = {
+      brand_name: 'UNUKASE',
+      tagline: 'Loading Experience',
+      primary_color: '#22c55e',
+      secondary_color: '#16a34a',
+      background_color: '#0a2e0a',
+      text_color: '#ffffff',
+      accent_color: '#86efac',
+      font_family: 'Poppins',
+      font_size: 16
+    };
+
+    async function onConfigChange(config) {
+      const brandName = config.brand_name || defaultConfig.brand_name;
+      const tagline = config.tagline || defaultConfig.tagline;
+      const primaryColor = config.primary_color || defaultConfig.primary_color;
+      const secondaryColor = config.secondary_color || defaultConfig.secondary_color;
+      const backgroundColor = config.background_color || defaultConfig.background_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const accentColor = config.accent_color || defaultConfig.accent_color;
+      const fontFamily = config.font_family || defaultConfig.font_family;
+      const fontSize = config.font_size || defaultConfig.font_size;
+
+      // Update text content
+      document.getElementById('brand-name').textContent = brandName;
+      document.getElementById('tagline').textContent = tagline;
+
+      // Update colors
+      const background = document.getElementById('background');
+      background.style.background = `linear-gradient(135deg, ${backgroundColor} 0%, #0f4a0f 25%, #064e3b 50%, #0a3a2e 75%, #0f1f1a 100%)`;
+
+      document.getElementById('tagline').style.color = accentColor;
+
+      // Update font
+      document.getElementById('brand-name').style.fontFamily = `${fontFamily}, 'Orbitron', sans-serif`;
+      document.getElementById('tagline').style.fontFamily = `${fontFamily}, sans-serif`;
+
+      // Update font size
+      document.getElementById('brand-name').style.fontSize = `${fontSize * 2.25}px`;
+      document.getElementById('tagline').style.fontSize = `${fontSize * 0.875}px`;
+
+      // Update dots color
+      document.querySelectorAll('.dot').forEach(dot => {
+        dot.style.backgroundColor = primaryColor;
+      });
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              config.background_color = value;
+              window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () => config.primary_color || defaultConfig.primary_color,
+            set: (value) => {
+              config.primary_color = value;
+              window.elementSdk.setConfig({ primary_color: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => config.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              config.accent_color = value;
+              window.elementSdk.setConfig({ accent_color: value });
+            }
+          },
+          {
+            get: () => config.secondary_color || defaultConfig.secondary_color,
+            set: (value) => {
+              config.secondary_color = value;
+              window.elementSdk.setConfig({ secondary_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (value) => {
+            config.font_family = value;
+            window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size,
+          set: (value) => {
+            config.font_size = value;
+            window.elementSdk.setConfig({ font_size: value });
+          }
+        }
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ['brand_name', config.brand_name || defaultConfig.brand_name],
+        ['tagline', config.tagline || defaultConfig.tagline]
+      ]);
+    }
+
+    // Initialize SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+   <script>
+        // Setting waktu loading (3000 = 3 detik)
+        setTimeout(function() {
+            window.location.href = "https://unukase.ac.id/";
+        }, 3000);
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c674986c5c9eb9e',t:'MTc2OTg0MjM1Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pusat Informasi Farmasi - Kak Bandar</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&amp;family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+        
+        .app-wrapper {
+            height: 100%;
+            width: 100%;
+            overflow-y: auto;
+            overflow-x: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .heading-font {
+            font-family: 'Outfit', sans-serif;
+        }
+        
+        /* Animated mesh gradient */
+        .mesh-gradient {
+            background: 
+                radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.3) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(59, 130, 246, 0.3) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.3) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(236, 72, 153, 0.3) 0px, transparent 50%);
+            animation: meshMove 15s ease infinite;
+        }
+        
+        @keyframes meshMove {
+            0%, 100% { background-position: 0% 0%, 100% 0%, 100% 100%, 0% 100%; }
+            25% { background-position: 50% 0%, 100% 50%, 50% 100%, 0% 50%; }
+            50% { background-position: 100% 0%, 50% 100%, 0% 100%, 50% 0%; }
+            75% { background-position: 50% 100%, 0% 50%, 50% 0%, 100% 50%; }
+        }
+        
+        /* Card animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        .delay-100 { animation-delay: 0.1s; opacity: 0; }
+        .delay-200 { animation-delay: 0.2s; opacity: 0; }
+        .delay-300 { animation-delay: 0.3s; opacity: 0; }
+        .delay-400 { animation-delay: 0.4s; opacity: 0; }
+        .delay-500 { animation-delay: 0.5s; opacity: 0; }
+        .delay-600 { animation-delay: 0.6s; opacity: 0; }
+        
+        /* Card hover effect */
+        .info-card {
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+            z-index: 1;
+        }
+        
+        .info-card:hover::before {
+            left: 100%;
+        }
+        
+        .info-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            padding: 2px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.5), rgba(59, 130, 246, 0.5));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .info-card:hover::after {
+            opacity: 1;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-12px) scale(1.03) rotateX(2deg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .info-card:active {
+            transform: translateY(-8px) scale(1.01);
+        }
+        
+        /* Card tilt effect */
+        .card-content {
+            position: relative;
+            z-index: 2;
+            transition: transform 0.3s ease;
+        }
+        
+        .info-card:hover .card-content {
+            transform: translateZ(20px);
+        }
+        
+        /* Icon animations */
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(5deg); }
+        }
+        
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+            25% { transform: translateY(-10px) rotate(-10deg) scale(1.1); }
+            50% { transform: translateY(-5px) rotate(5deg) scale(1.15); }
+            75% { transform: translateY(-8px) rotate(-5deg) scale(1.1); }
+        }
+        
+        .card-icon {
+            animation: iconPulse 2s ease-in-out infinite;
+            transition: all 0.4s ease;
+            display: inline-block;
+        }
+        
+        .info-card:hover .card-icon {
+            animation: iconBounce 0.8s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(16, 185, 129, 0.6));
+        }
+        
+        /* Button shimmer */
+        .btn-shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-shimmer::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .btn-shimmer:hover::after {
+            left: 100%;
+        }
+        
+        /* Glass effect */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        
+        /* Navbar slide in */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .slide-down {
+            animation: slideDown 0.5s ease-out forwards;
+        }
+        
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.15;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(100px, -100px) rotate(90deg);
+            }
+            50% {
+                transform: translate(200px, 0) rotate(180deg);
+            }
+            75% {
+                transform: translate(100px, 100px) rotate(270deg);
+            }
+        }
+        
+        .particle-1 { animation-delay: 0s; }
+        .particle-2 { animation-delay: -5s; }
+        .particle-3 { animation-delay: -10s; }
+        .particle-4 { animation-delay: -15s; }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div class="app-wrapper mesh-gradient" id="app-wrapper"><!-- Floating Particles -->
+   <div class="particle particle-1 w-32 h-32 top-20 left-10" id="particle-1"></div>
+   <div class="particle particle-2 w-24 h-24 top-40 right-20" id="particle-2"></div>
+   <div class="particle particle-3 w-40 h-40 bottom-32 left-1/4" id="particle-3"></div>
+   <div class="particle particle-4 w-28 h-28 bottom-20 right-1/3" id="particle-4"></div><!-- Navigation -->
+   <nav class="glass-card slide-down fixed top-0 left-0 right-0 z-50 border-b" id="navbar">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+     <div class="flex items-center justify-between">
+      <div class="flex items-center gap-3">
+       <div class="w-12 h-12 rounded-2xl flex items-center justify-center text-3xl" id="nav-logo-bg">
+        💊
+       </div><span class="text-2xl font-bold heading-font" id="nav-logo-text"> Farma<span id="nav-logo-accent">Info</span> </span>
+      </div><button class="px-6 py-2.5 rounded-xl font-medium transition-all hover:scale-105 flex items-center gap-2 btn-shimmer" id="back-btn" onclick="jawa2()"> <span>←</span> <span id="back-btn-text">Kembali ke Beranda</span> </button>
+     </div>
+    </div>
+   </nav><!-- Main Content -->
+   <main class="pt-32 pb-20 px-6">
+    <div class="max-w-7xl mx-auto"><!-- Header -->
+     <header class="text-center mb-16 fade-in-up delay-100">
+      <div class="inline-block px-5 py-2 rounded-full text-sm font-semibold mb-6" id="badge">
+       ✨ Pusat Pengetahuan Farmasi
+      </div>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold heading-font mb-6 leading-tight" id="page-title">Edukasi &amp; Artikel Tentang Farmasi</h1>
+      <p class="text-lg md:text-xl opacity-90 max-w-2xl mx-auto" id="page-subtitle">Temukan artikel seputar dunia farmasi di sini.</p>
+     </header><!-- Cards Grid -->
+     <section class="grid md:grid-cols-2 lg:grid-cols-4 gap-6"><!-- Card 1 -->
+      <article class="info-card glass-card rounded-3xl p-8 fade-in-up delay-200">
+       <div class="card-content">
+        <div class="card-icon text-5xl mb-6 inline-block">
+         💊
+        </div>
+        <h3 class="text-2xl font-bold heading-font mb-4" id="card1-title">Penggunaan Obat</h3>
+        <p class="opacity-80 mb-6 leading-relaxed" id="card1-desc">Panduan cara minum obat yang benar agar efektif dan aman bagi tubuh.</p><button class="w-full py-3 rounded-xl font-semibold transition-all hover:scale-105 btn-shimmer" id="card1-btn"> <span id="card1-btn-text">Baca Selengkapnya</span> → </button>
+       </div>
+      </article><!-- Card 2 -->
+      <article class="info-card glass-card rounded-3xl p-8 fade-in-up delay-300">
+       <div class="card-content">
+        <div class="card-icon text-5xl mb-6 inline-block">
+         🧪
+        </div>
+        <h3 class="text-2xl font-bold heading-font mb-4" id="card2-title">Edukasi Farmasi</h3>
+        <p class="opacity-80 mb-6 leading-relaxed" id="card2-desc">Mengenal lebih dalam tentang ilmu meracik obat dan bahan aktif di dalamnya.</p><button class="w-full py-3 rounded-xl font-semibold transition-all hover:scale-105 btn-shimmer" id="card2-btn"> <span id="card2-btn-text">Baca Selengkapnya</span> → </button>
+       </div>
+      </article><!-- Card 3 -->
+      <article class="info-card glass-card rounded-3xl p-8 fade-in-up delay-400">
+       <div class="card-content">
+        <div class="card-icon text-5xl mb-6 inline-block">
+         🌿
+        </div>
+        <h3 class="text-2xl font-bold heading-font mb-4" id="card3-title">Tanaman Herbal</h3>
+        <p class="opacity-80 mb-6 leading-relaxed" id="card3-desc">Artikel Informasi Tentang Herbal Ada disini.</p><button class="w-full py-3 rounded-xl font-semibold transition-all hover:scale-105 btn-shimmer" id="card3-btn" onclick="herbal2()"> <span id="card3-btn-text">Baca Selengkapnya</span> → </button>
+       </div>
+      </article><!-- Card 4 -->
+      <article class="info-card glass-card rounded-3xl p-8 fade-in-up delay-500">
+       <div class="card-content">
+        <div class="card-icon text-5xl mb-6 inline-block">
+         ⚠️
+        </div>
+        <h3 class="text-2xl font-bold heading-font mb-4" id="card4-title">Efek Samping</h3>
+        <p class="opacity-80 mb-6 leading-relaxed" id="card4-desc">Kenali gejala dan cara menangani efek samping obat yang tidak diinginkan.</p><button class="w-full py-3 rounded-xl font-semibold transition-all hover:scale-105 btn-shimmer" id="card4-btn"> <span id="card4-btn-text">Baca Selengkapnya</span> → </button>
+       </div>
+      </article>
+     </section>
+    </div>
+   </main><!-- Footer -->
+   <footer class="py-8 px-6 border-t fade-in-up delay-600" id="footer">
+    <div class="max-w-7xl mx-auto text-center">
+     <p class="opacity-70" id="footer-text">© 2026 Web Farmasi UNUKASE</p>
+    </div>
+   </footer>
+  </div>
+  <script>
+        const defaultConfig = {
+            background_color: '#0a0e27',
+            surface_color: '#1a1f3a',
+            text_color: '#ffffff',
+            primary_action: '#10b981',
+            secondary_action: '#3b82f6',
+            font_family: 'Outfit',
+            font_size: 16,
+            page_title: 'Edukasi & Artikel Tentang Farmasi',
+            page_subtitle: 'Temukan artikel seputar dunia farmasi di sini.',
+            card1_title: 'Penggunaan Obat',
+            card1_desc: 'Panduan cara minum obat yang benar agar efektif dan aman bagi tubuh.',
+            card2_title: 'Edukasi Farmasi',
+            card2_desc: 'Mengenal lebih dalam tentang ilmu meracik obat dan bahan aktif di dalamnya.',
+            card3_title: 'Tanaman Herbal',
+            card3_desc: 'Artikel Informasi Tentang Herbal Ada disini.',
+            card4_title: 'Efek Samping',
+            card4_desc: 'Kenali gejala dan cara menangani efek samping obat yang tidak diinginkan.',
+            button_text: 'Baca Selengkapnya'
+        };
+
+        let config = { ...defaultConfig };
+
+        function applyConfig(cfg) {
+            const bg = cfg.background_color || defaultConfig.background_color;
+            const surface = cfg.surface_color || defaultConfig.surface_color;
+            const text = cfg.text_color || defaultConfig.text_color;
+            const primary = cfg.primary_action || defaultConfig.primary_action;
+            const secondary = cfg.secondary_action || defaultConfig.secondary_action;
+            const fontFamily = cfg.font_family || defaultConfig.font_family;
+            const fontSize = cfg.font_size || defaultConfig.font_size;
+
+            // Background
+            document.getElementById('app-wrapper').style.backgroundColor = bg;
+            
+            // Navbar
+            document.getElementById('navbar').style.borderColor = `${surface}66`;
+            document.getElementById('nav-logo-bg').style.backgroundColor = `${primary}22`;
+            document.getElementById('nav-logo-text').style.color = text;
+            document.getElementById('nav-logo-accent').style.color = primary;
+            document.getElementById('back-btn').style.backgroundColor = surface;
+            document.getElementById('back-btn').style.color = text;
+            document.getElementById('back-btn-text').textContent = 'Kembali ke Beranda';
+            
+            // Header
+            document.getElementById('badge').style.backgroundColor = `${secondary}22`;
+            document.getElementById('badge').style.color = secondary;
+            document.getElementById('page-title').textContent = cfg.page_title || defaultConfig.page_title;
+            document.getElementById('page-title').style.color = text;
+            document.getElementById('page-subtitle').textContent = cfg.page_subtitle || defaultConfig.page_subtitle;
+            document.getElementById('page-subtitle').style.color = text;
+            
+            // Cards
+            for (let i = 1; i <= 4; i++) {
+                const titleKey = `card${i}_title`;
+                const descKey = `card${i}_desc`;
+                
+                document.getElementById(`card${i}-title`).textContent = cfg[titleKey] || defaultConfig[titleKey];
+                document.getElementById(`card${i}-title`).style.color = text;
+                document.getElementById(`card${i}-desc`).textContent = cfg[descKey] || defaultConfig[descKey];
+                document.getElementById(`card${i}-desc`).style.color = text;
+                document.getElementById(`card${i}-btn`).style.backgroundColor = primary;
+                document.getElementById(`card${i}-btn`).style.color = bg;
+                document.getElementById(`card${i}-btn-text`).textContent = cfg.button_text || defaultConfig.button_text;
+            }
+            
+            // Particles
+            for (let i = 1; i <= 4; i++) {
+                document.getElementById(`particle-${i}`).style.backgroundColor = `${primary}`;
+            }
+            
+            // Footer
+            document.getElementById('footer').style.borderColor = `${surface}66`;
+            document.getElementById('footer-text').style.color = text;
+            
+            // Font family
+            const baseFontStack = 'Poppins, sans-serif';
+            const headingStack = `${fontFamily}, ${baseFontStack}`;
+            
+            document.querySelectorAll('.heading-font').forEach(el => {
+                el.style.fontFamily = headingStack;
+            });
+            
+            // Font sizes
+            document.getElementById('page-title').style.fontSize = `${fontSize * 3}px`;
+            document.getElementById('page-subtitle').style.fontSize = `${fontSize * 1.25}px`;
+            
+            for (let i = 1; i <= 4; i++) {
+                document.getElementById(`card${i}-title`).style.fontSize = `${fontSize * 1.5}px`;
+                document.getElementById(`card${i}-desc`).style.fontSize = `${fontSize * 0.9}px`;
+            }
+        }
+
+        // Initialize SDK
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange: async (cfg) => {
+                    config = { ...defaultConfig, ...cfg };
+                    applyConfig(config);
+                },
+                mapToCapabilities: (cfg) => ({
+                    recolorables: [
+                        {
+                            get: () => cfg.background_color || defaultConfig.background_color,
+                            set: (v) => { cfg.background_color = v; window.elementSdk.setConfig({ background_color: v }); }
+                        },
+                        {
+                            get: () => cfg.surface_color || defaultConfig.surface_color,
+                            set: (v) => { cfg.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); }
+                        },
+                        {
+                            get: () => cfg.text_color || defaultConfig.text_color,
+                            set: (v) => { cfg.text_color = v; window.elementSdk.setConfig({ text_color: v }); }
+                        },
+                        {
+                            get: () => cfg.primary_action || defaultConfig.primary_action,
+                            set: (v) => { cfg.primary_action = v; window.elementSdk.setConfig({ primary_action: v }); }
+                        },
+                        {
+                            get: () => cfg.secondary_action || defaultConfig.secondary_action,
+                            set: (v) => { cfg.secondary_action = v; window.elementSdk.setConfig({ secondary_action: v }); }
+                        }
+                    ],
+                    borderables: [],
+                    fontEditable: {
+                        get: () => cfg.font_family || defaultConfig.font_family,
+                        set: (v) => { cfg.font_family = v; window.elementSdk.setConfig({ font_family: v }); }
+                    },
+                    fontSizeable: {
+                        get: () => cfg.font_size || defaultConfig.font_size,
+                        set: (v) => { cfg.font_size = v; window.elementSdk.setConfig({ font_size: v }); }
+                    }
+                }),
+                mapToEditPanelValues: (cfg) => new Map([
+                    ['page_title', cfg.page_title || defaultConfig.page_title],
+                    ['page_subtitle', cfg.page_subtitle || defaultConfig.page_subtitle],
+                    ['card1_title', cfg.card1_title || defaultConfig.card1_title],
+                    ['card1_desc', cfg.card1_desc || defaultConfig.card1_desc],
+                    ['card2_title', cfg.card2_title || defaultConfig.card2_title],
+                    ['card2_desc', cfg.card2_desc || defaultConfig.card2_desc],
+                    ['card3_title', cfg.card3_title || defaultConfig.card3_title],
+                    ['card3_desc', cfg.card3_desc || defaultConfig.card3_desc],
+                    ['card4_title', cfg.card4_title || defaultConfig.card4_title],
+                    ['card4_desc', cfg.card4_desc || defaultConfig.card4_desc],
+                    ['button_text', cfg.button_text || defaultConfig.button_text]
+                ])
+            });
+        } else {
+            applyConfig(config);
+        }
+    </script>
+    <script src="class1.js"></script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c658c4a137d880d',t:'MTc2OTgyNDExOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
