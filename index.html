@@ -8,216 +8,398 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
   <style>
-        body {
-            box-sizing: border-box;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html, body {
-            height: 100%;
-            width: 100%;
-        }
-        
-        .app-wrapper {
-            height: 100%;
-            width: 100%;
-            overflow-y: auto;
-            overflow-x: hidden;
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .heading-font {
-            font-family: 'Space Grotesk', sans-serif;
-        }
-        
-        /* Animated gradient background */
-        .hero-gradient {
-            background: linear-gradient(135deg, #0d9488 0%, #14b8a6 25%, #2dd4bf 50%, #5eead4 75%, #99f6e4 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 8s ease infinite;
-        }
-        
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        /* Floating animation */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        .float-animation {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        .float-delay-1 {
-            animation-delay: 0.5s;
-        }
-        
-        .float-delay-2 {
-            animation-delay: 1s;
-        }
-        
-        /* Pulse glow effect */
-        @keyframes pulseGlow {
-            0%, 100% { box-shadow: 0 0 20px rgba(20, 184, 166, 0.4); }
-            50% { box-shadow: 0 0 40px rgba(20, 184, 166, 0.8); }
-        }
-        
-        .pulse-glow {
-            animation: pulseGlow 3s ease-in-out infinite;
-        }
-        
-        /* Card hover effects */
-        .feature-card {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-12px) scale(1.02);
-        }
-        
-        /* Staggered entrance animations */
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .slide-up {
-            animation: slideUp 0.8s ease-out forwards;
-        }
-        
-        .delay-1 { animation-delay: 0.1s; opacity: 0; }
-        .delay-2 { animation-delay: 0.2s; opacity: 0; }
-        .delay-3 { animation-delay: 0.3s; opacity: 0; }
-        .delay-4 { animation-delay: 0.4s; opacity: 0; }
-        .delay-5 { animation-delay: 0.5s; opacity: 0; }
-        
-        /* Nav link hover */
-        .nav-link {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: currentColor;
-            transform: translateX(-100%);
-            transition: transform 0.3s ease;
-        }
-        
-        .nav-link:hover::after {
-            transform: translateX(0);
-        }
-        
-        /* Button ripple effect */
-        .btn-primary {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.6s ease, height 0.6s ease;
-        }
-        
-        .btn-primary:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-        
-        /* Decorative shapes */
-        .shape-blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(60px);
-            opacity: 0.5;
-        }
-        
-        /* Glass morphism effect */
-        .glass {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        /* Interactive emoji animation */
-        .emoji-particle {
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            font-size: 2rem;
-            animation: floatUpFade 2s ease-out forwards;
-        }
-        
-        @keyframes floatUpFade {
-            0% {
-                opacity: 1;
-                transform: translateY(0) scale(0.5) rotate(0deg);
-            }
-            50% {
-                opacity: 1;
-                transform: translateY(-100px) scale(1) rotate(180deg);
-            }
-            100% {
-                opacity: 0;
-                transform: translateY(-200px) scale(0.3) rotate(360deg);
-            }
-        }
-    </style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      height: 100%;
+      width: 100%;
+    }
+    
+    .app-wrapper {
+      height: 100%;
+      width: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .heading-font {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    
+    .hero-gradient {
+      background: linear-gradient(135deg, #0d9488 0%, #14b8a6 25%, #2dd4bf 50%, #5eead4 75%, #99f6e4 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 8s ease infinite;
+    }
+    
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    .float-animation {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .float-delay-1 {
+      animation-delay: 0.5s;
+    }
+    
+    .float-delay-2 {
+      animation-delay: 1s;
+    }
+    
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 20px rgba(20, 184, 166, 0.4); }
+      50% { box-shadow: 0 0 40px rgba(20, 184, 166, 0.8); }
+    }
+    
+    .pulse-glow {
+      animation: pulseGlow 3s ease-in-out infinite;
+    }
+    
+    .feature-card {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-12px) scale(1.02);
+    }
+    
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .slide-up {
+      animation: slideUp 0.8s ease-out forwards;
+    }
+    
+    .delay-1 { animation-delay: 0.1s; opacity: 0; }
+    .delay-2 { animation-delay: 0.2s; opacity: 0; }
+    .delay-3 { animation-delay: 0.3s; opacity: 0; }
+    .delay-4 { animation-delay: 0.4s; opacity: 0; }
+    .delay-5 { animation-delay: 0.5s; opacity: 0; }
+    
+    .nav-link {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .nav-link::after {
+      display: none;
+    }
+    
+    .nav-link:hover::after {
+      display: none;
+    }
+    
+    .btn-primary {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s ease, height 0.6s ease;
+    }
+    
+    .btn-primary:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+    
+    .shape-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.5;
+    }
+    
+    .glass {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .emoji-particle {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      font-size: 2rem;
+      animation: floatUpFade 2s ease-out forwards;
+    }
+    
+    @keyframes floatUpFade {
+      0% {
+        opacity: 1;
+        transform: translateY(0) scale(0.5) rotate(0deg);
+      }
+      50% {
+        opacity: 1;
+        transform: translateY(-100px) scale(1) rotate(180deg);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-200px) scale(0.3) rotate(360deg);
+      }
+    }
+
+    .container-foto {
+      width: 100%;
+      max-width: 60px;
+      border: 3px solid transparent;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .container-foto img {
+      width: 100%;
+      display: block;
+    }
+
+    /* RESPONSIVE MOBILE OPTIMIZATION */
+    @media (max-width: 768px) {
+      .shape-blob {
+        width: 200px !important;
+        height: 200px !important;
+      }
+
+      #blob-1 {
+        width: 150px !important;
+        height: 150px !important;
+      }
+
+      #blob-2 {
+        width: 130px !important;
+        height: 130px !important;
+      }
+
+      #blob-3 {
+        width: 100px !important;
+        height: 100px !important;
+      }
+
+      .hero-gradient .max-w-7xl {
+        padding-top: 100px !important;
+        padding-bottom: 30px !important;
+      }
+
+      .float-animation {
+        animation: none;
+      }
+
+      .float-delay-1,
+      .float-delay-2 {
+        animation: none !important;
+      }
+
+      .absolute.top-32,
+      .absolute.bottom-40,
+      .absolute.top-1\\/2 {
+        display: none !important;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-8px) scale(1.01);
+      }
+
+      .btn-primary::before {
+        display: none;
+      }
+
+      .relative.w-80 {
+        width: 200px !important;
+        height: 200px !important;
+      }
+
+      .relative.w-80 .text-9xl {
+        font-size: 4rem !important;
+      }
+
+      .absolute.-top-4,
+      .absolute.top-1\\/2,
+      .absolute.-bottom-4 {
+        width: 12px !important;
+        height: 12px !important;
+      }
+
+      .absolute.-top-4 .text-2xl,
+      .absolute.top-1\\/2 .text-2xl,
+      .absolute.-bottom-4 .text-2xl,
+      .absolute.-left-4 .text-2xl {
+        font-size: 1rem !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      html, body, .app-wrapper {
+        font-size: 14px;
+      }
+
+      .slide-up {
+        animation: slideUp 0.6s ease-out forwards !important;
+      }
+
+      .delay-1,
+      .delay-2,
+      .delay-3,
+      .delay-4,
+      .delay-5 {
+        animation-delay: 0s !important;
+      }
+
+      .text-6xl {
+        font-size: 2rem !important;
+      }
+
+      .text-5xl {
+        font-size: 1.875rem !important;
+      }
+
+      .text-4xl {
+        font-size: 1.5rem !important;
+      }
+
+      .text-xl {
+        font-size: 1rem !important;
+      }
+
+      .text-lg {
+        font-size: 0.95rem !important;
+      }
+
+      .px-6 {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+      }
+
+      .px-8 {
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+      }
+
+      .py-4 {
+        padding-top: 0.75rem !important;
+        padding-bottom: 0.75rem !important;
+      }
+
+      .py-12 {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+      }
+
+      .gap-12 {
+        gap: 2rem !important;
+      }
+
+      .mb-8 {
+        margin-bottom: 1.5rem !important;
+      }
+
+      .mb-6 {
+        margin-bottom: 1rem !important;
+      }
+
+      .pt-32 {
+        padding-top: 3rem !important;
+      }
+
+      .pb-20 {
+        padding-bottom: 2rem !important;
+      }
+
+      .grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .hidden.md\\:flex {
+        display: none !important;
+      }
+
+      .btn-primary {
+        font-size: 1rem !important;
+        padding: 0.75rem 1.5rem !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .relative.w-80 {
+        width: 150px !important;
+        height: 150px !important;
+      }
+
+      .relative.w-80 .text-9xl {
+        font-size: 3rem !important;
+      }
+
+      .text-sm {
+        font-size: 0.75rem !important;
+      }
+
+      .w-10.h-10 {
+        width: 2rem !important;
+        height: 2rem !important;
+      }
+
+      .text-2xl {
+        font-size: 1.25rem !important;
+      }
+
+      .flex.gap-3 {
+        gap: 0.75rem !important;
+      }
+
+      .grid.md\\:grid-cols-3 {
+        grid-template-columns: 1fr !important;
+      }
+
+      .space-y-2 {
+        gap: 0.5rem !important;
+      }
+    }
+  </style>
   <style>@view-transition { navigation: auto; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <style>@view-transition { navigation: auto; }</style>
  </head>
  <body>
   <div class="app-wrapper" id="app-wrapper"><!-- Navigation -->
    <nav class="fixed top-0 left-0 right-0 z-50 glass slide-up">
     <div class="max-w-7xl mx-auto px-6 py-4">
      <div class="flex items-center justify-between">
-      <div class="flex items-center gap-3"><div class="container-foto">
-    <!-- src itu link gambarnya, alt itu teks kalau gambarnya gagal loading -->
-    <img src="unukase.png" alt="Gambar Sushi Enak">
-</div>
-
-<style>
-    .container-foto {
-        width: 200px; /* Atur lebar kotak div-nya */
-        border: 3px solid none; /* Kasih pinggiran warna pink lucu */
-        border-radius: 10px; /* Biar sudutnya gak tajam */
-        overflow: hidden; /* Biar gambarnya gak keluar jalur */
-    }
-
-    .container-foto img {
-        width: 60%; /* Biar gambar ngikutin lebar div */
-        display: block;
-    }
-</style>
+      <div class="flex items-center gap-3">
+       <div class="container-foto"><img src="unukase.png" alt="Logo Unukase" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='#14b8a6'; this.alt='Logo unavailable';">
+       </div>
        <div class="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl pulse-glow" id="logo-bg">
         💊
        </div><span class="text-2xl font-bold heading-font" id="logo-text"> Phar<span id="logo-accent">macy</span> </span>
@@ -228,12 +410,11 @@
       </ul><button class="md:hidden text-2xl" id="mobile-menu-btn">☰</button>
      </div>
     </div>
-    
    </nav><!-- Hero Section -->
-   <header class="hero-gradient relative min-h-screen flex items-center overflow-hidden"><!-- Decorative elements -->
+   <header class="hero-gradient relative min-h-screen flex items-center overflow-hidden">
     <div class="shape-blob w-96 h-96 -top-20 -left-20 float-animation" id="blob-1"></div>
     <div class="shape-blob w-80 h-80 top-1/3 -right-10 float-animation float-delay-1" id="blob-2"></div>
-    <div class="shape-blob w-64 h-64 bottom-20 left-1/4 float-animation float-delay-2" id="blob-3"></div><!-- Floating pills decoration -->
+    <div class="shape-blob w-64 h-64 bottom-20 left-1/4 float-animation float-delay-2" id="blob-3"></div>
     <div class="absolute top-32 right-20 text-6xl float-animation opacity-20">
      💊
     </div>
@@ -243,24 +424,24 @@
     <div class="absolute top-1/2 right-40 text-4xl float-animation float-delay-2 opacity-20">
      💉
     </div>
-    <div class="max-w-7xl mx-auto px-6 pt-32 pb-20 relative z-10">
+    <div class="max-w-7xl mx-auto px-6 pt-32 pb-20 relative z-10 w-full">
      <div class="grid lg:grid-cols-2 gap-12 items-center">
       <div class="text-center lg:text-left">
        <div class="inline-block px-4 py-2 rounded-full text-sm font-medium mb-6 slide-up delay-1" id="badge">
         🌟 Platform Farmasi Buatan UNUKASE
        </div>
        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold heading-font leading-tight mb-6 slide-up delay-2" id="hero-title">Semua Tentang FARMASI ada disini</h1>
-       <p class="text-lg md:text-xl opacity-90 mb-8 max-w-xl slide-up delay-3" id="hero-subtitle">Dapatkan semua informasi tentang FARMASI disini. Konsultasi, beli obat, dan pesan antar dalam satu platform.</p>
-       <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start slide-up delay-4"><button class="btn-primary px-8 py-4 rounded-2xl font-semibold text-lg shadow-xl transition-all hover:scale-105" id="cta-btn" onclick="jahe2()"> <span id="button-text">Pelajari Selengkapnya</span> → </button>
+       <p class="text-lg md:text-xl opacity-90 mb-8 max-w-xl mx-auto lg:mx-0 slide-up delay-3" id="hero-subtitle">Dapatkan semua informasi tentang FARMASI disini. Konsultasi, beli obat, dan pesan antar dalam satu platform.</p>
+       <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start slide-up delay-4"><button class="btn-primary px-8 py-4 rounded-2xl font-semibold text-lg shadow-xl transition-all hover:scale-105 w-full sm:w-auto" id="cta-btn" onclick="jahe2()"> <span id="button-text">Pelajari Selengkapnya</span> → </button>
        </div>
-      </div><!-- Hero Illustration -->
+      </div>
       <div class="relative flex justify-center slide-up delay-5">
-       <div class="relative w-80 h-80 md:w-96 md:h-96"><!-- Main circle -->
+       <div class="relative w-80 h-80 md:w-96 md:h-96">
         <div class="absolute inset-0 rounded-full glass flex items-center justify-center">
          <div class="text-9xl float-animation">
           🏥
          </div>
-        </div><!-- Orbiting elements -->
+        </div>
         <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-16 h-16 rounded-2xl flex items-center justify-center text-2xl shadow-lg float-animation" id="orbit-1">
          💊
         </div>
@@ -276,14 +457,15 @@
        </div>
       </div>
      </div>
-    </div><!-- Wave divider -->
+    </div>
     <div class="absolute bottom-0 left-0 right-0">
-     <svg viewbox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" id="wave-fill" />
+     <svg viewbox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 120L60 105C120 90 240 60 360 52.5C480 45 600 37.5 720 37.5C840 37.5 960 45 1080 52.5C1200 60 1320 75 1440 75V120H1380C1320 120C1200 120C1080 120C960 120C840 120H0Z" id="wave-fill" />
      </svg>
     </div>
    </header><!-- Footer -->
    <footer class="py-12 px-6 border-t" id="footer">
-    <div class="max-w-7xl mx-auto">
+    <div class="max-w-7xl mx-auto w-full">
      <div class="grid md:grid-cols-3 gap-8 mb-8">
       <div>
        <div class="flex items-center gap-3 mb-4">
@@ -293,8 +475,7 @@
        </div>
        <p class="opacity-70 text-sm" id="footer-desc">Platform Farmasi UNUKASE Digital Yang Bisa Diakses Semua Orang.</p>
       </div>
-      <div>
-       <button onclick="jahe3()"><h4 class="font-semibold mb-4" id="footer-h1">Tentang Kami</h4></button>
+      <div><button onclick="jahe3()"><h4 class="font-semibold mb-4" id="footer-h1">Tentang Kami</h4></button>
        <ul class="space-y-2 opacity-70 text-sm">
         <li><button onclick="bubub()"><a href="#" class="hover:opacity-100 transition-opacity">Profil Kampus</a></button></li>
         <li><a href="#" class="hover:opacity-100 transition-opacity">Visi &amp; Misi</a></li>
@@ -315,184 +496,169 @@
    </footer>
   </div>
   <script>
-        const defaultConfig = {
-            background_color: '#0f172a',
-            surface_color: '#1e293b',
-            text_color: '#f8fafc',
-            primary_action: '#14b8a6',
-            secondary_action: '#5eead4',
-            font_family: 'Space Grotesk',
-            font_size: 16,
-            hero_title: 'Semua Tentang FARMASI ada disini',
-            hero_subtitle: 'Dapatkan semua informasi tentang FARMASI disini. Konsultasi, beli obat, dan pesan antar dalam satu platform.',
-            button_text: 'Pelajari Selengkapnya'
-        };
+    const defaultConfig = {
+      background_color: '#0f172a',
+      surface_color: '#1e293b',
+      text_color: '#f8fafc',
+      primary_action: '#14b8a6',
+      secondary_action: '#5eead4',
+      font_family: 'Space Grotesk',
+      font_size: 16,
+      hero_title: 'Semua Tentang FARMASI ada disini',
+      hero_subtitle: 'Dapatkan semua informasi tentang FARMASI disini. Konsultasi, beli obat, dan pesan antar dalam satu platform.',
+      button_text: 'Pelajari Selengkapnya'
+    };
 
-        let config = { ...defaultConfig };
+    let config = { ...defaultConfig };
 
-        function applyConfig(cfg) {
-            const bg = cfg.background_color || defaultConfig.background_color;
-            const surface = cfg.surface_color || defaultConfig.surface_color;
-            const text = cfg.text_color || defaultConfig.text_color;
-            const primary = cfg.primary_action || defaultConfig.primary_action;
-            const secondary = cfg.secondary_action || defaultConfig.secondary_action;
-            const fontFamily = cfg.font_family || defaultConfig.font_family;
-            const fontSize = cfg.font_size || defaultConfig.font_size;
+    function applyConfig(cfg) {
+      const bg = cfg.background_color || defaultConfig.background_color;
+      const surface = cfg.surface_color || defaultConfig.surface_color;
+      const text = cfg.text_color || defaultConfig.text_color;
+      const primary = cfg.primary_action || defaultConfig.primary_action;
+      const secondary = cfg.secondary_action || defaultConfig.secondary_action;
+      const fontFamily = cfg.font_family || defaultConfig.font_family;
+      const fontSize = cfg.font_size || defaultConfig.font_size;
 
-            // Background
-            document.getElementById('app-wrapper').style.backgroundColor = bg;
-            document.getElementById('footer').style.backgroundColor = bg;
-            document.getElementById('wave-fill').setAttribute('fill', bg);
+      document.getElementById('app-wrapper').style.backgroundColor = bg;
+      document.getElementById('footer').style.backgroundColor = bg;
+      document.getElementById('wave-fill').setAttribute('fill', bg);
 
-            // Text colors
-            document.getElementById('app-wrapper').style.color = text;
-            document.getElementById('logo-text').style.color = text;
-            document.getElementById('logo-accent').style.color = primary;
-            
-            for (let i = 1; i <= 4; i++) {
-                document.getElementById(`nav-${i}`).style.color = text;
+      document.getElementById('app-wrapper').style.color = text;
+      document.getElementById('logo-text').style.color = text;
+      document.getElementById('logo-accent').style.color = primary;
+      
+      for (let i = 1; i <= 4; i++) {
+        const el = document.getElementById(`nav-${i}`);
+        if (el) el.style.color = text;
+      }
+
+      document.getElementById('badge').style.backgroundColor = `${bg}cc`;
+      document.getElementById('badge').style.color = secondary;
+      document.getElementById('hero-title').textContent = cfg.hero_title || defaultConfig.hero_title;
+      document.getElementById('hero-subtitle').textContent = cfg.hero_subtitle || defaultConfig.hero_subtitle;
+      document.getElementById('button-text').textContent = cfg.button_text || defaultConfig.button_text;
+
+      document.getElementById('cta-btn').style.backgroundColor = primary;
+      document.getElementById('cta-btn').style.color = bg;
+
+      document.getElementById('logo-bg').style.backgroundColor = `${primary}22`;
+      
+      for (let i = 1; i <= 4; i++) {
+        document.getElementById(`orbit-${i}`).style.backgroundColor = surface;
+      }
+
+      document.getElementById('blob-1').style.backgroundColor = `${secondary}44`;
+      document.getElementById('blob-2').style.backgroundColor = `${primary}44`;
+      document.getElementById('blob-3').style.backgroundColor = `${secondary}33`;
+
+      document.getElementById('footer-logo-bg').style.backgroundColor = `${primary}22`;
+      document.getElementById('footer').style.borderColor = `${surface}`;
+      document.getElementById('social-1').style.backgroundColor = surface;
+      document.getElementById('social-2').style.backgroundColor = surface;
+
+      const baseFontStack = 'Inter, sans-serif';
+      const headingStack = `${fontFamily}, ${baseFontStack}`;
+      
+      document.querySelectorAll('.heading-font').forEach(el => {
+        el.style.fontFamily = headingStack;
+      });
+
+      document.getElementById('hero-title').style.fontSize = `${fontSize * 3}px`;
+      document.getElementById('hero-subtitle').style.fontSize = `${fontSize * 1.25}px`;
+    }
+
+    const emojis = ['💊', '💉', '🏥', '🩺', '🧬', '💙', '✨', '⚕️', '🔬'];
+    
+    function createEmojiParticle(x, y) {
+      const emoji = document.createElement('div');
+      emoji.className = 'emoji-particle';
+      emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      emoji.style.left = `${x}px`;
+      emoji.style.top = `${y}px`;
+      document.body.appendChild(emoji);
+      
+      setTimeout(() => {
+        emoji.remove();
+      }, 2000);
+    }
+    
+    document.addEventListener('click', (e) => {
+      createEmojiParticle(e.clientX, e.clientY);
+    });
+    
+    document.addEventListener('touchstart', (e) => {
+      for (let i = 0; i < e.touches.length; i++) {
+        createEmojiParticle(e.touches[i].clientX, e.touches[i].clientY);
+      }
+    });
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (cfg) => {
+          config = { ...defaultConfig, ...cfg };
+          applyConfig(config);
+        },
+        mapToCapabilities: (cfg) => ({
+          recolorables: [
+            {
+              get: () => cfg.background_color || defaultConfig.background_color,
+              set: (v) => { cfg.background_color = v; window.elementSdk.setConfig({ background_color: v }); }
+            },
+            {
+              get: () => cfg.surface_color || defaultConfig.surface_color,
+              set: (v) => { cfg.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); }
+            },
+            {
+              get: () => cfg.text_color || defaultConfig.text_color,
+              set: (v) => { cfg.text_color = v; window.elementSdk.setConfig({ text_color: v }); }
+            },
+            {
+              get: () => cfg.primary_action || defaultConfig.primary_action,
+              set: (v) => { cfg.primary_action = v; window.elementSdk.setConfig({ primary_action: v }); }
+            },
+            {
+              get: () => cfg.secondary_action || defaultConfig.secondary_action,
+              set: (v) => { cfg.secondary_action = v; window.elementSdk.setConfig({ secondary_action: v }); }
             }
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => cfg.font_family || defaultConfig.font_family,
+            set: (v) => { cfg.font_family = v; window.elementSdk.setConfig({ font_family: v }); }
+          },
+          fontSizeable: {
+            get: () => cfg.font_size || defaultConfig.font_size,
+            set: (v) => { cfg.font_size = v; window.elementSdk.setConfig({ font_size: v }); }
+          }
+        }),
+        mapToEditPanelValues: (cfg) => new Map([
+          ['hero_title', cfg.hero_title || defaultConfig.hero_title],
+          ['hero_subtitle', cfg.hero_subtitle || defaultConfig.hero_subtitle],
+          ['button_text', cfg.button_text || defaultConfig.button_text]
+        ])
+      });
+    } else {
+      applyConfig(config);
+    }
 
-            // Hero section
-            document.getElementById('badge').style.backgroundColor = `${bg}cc`;
-            document.getElementById('badge').style.color = secondary;
-            document.getElementById('hero-title').textContent = cfg.hero_title || defaultConfig.hero_title;
-            document.getElementById('hero-subtitle').textContent = cfg.hero_subtitle || defaultConfig.hero_subtitle;
-            document.getElementById('button-text').textContent = cfg.button_text || defaultConfig.button_text;
-
-            // Buttons
-            document.getElementById('cta-btn').style.backgroundColor = primary;
-            document.getElementById('cta-btn').style.color = bg;
-            document.getElementById('secondary-btn').style.borderColor = text;
-            document.getElementById('secondary-btn').style.color = text;
-
-            // Logo and orbits
-            document.getElementById('logo-bg').style.backgroundColor = `${primary}22`;
-            
-            for (let i = 1; i <= 4; i++) {
-                document.getElementById(`orbit-${i}`).style.backgroundColor = surface;
-            }
-
-            // Blobs
-            document.getElementById('blob-1').style.backgroundColor = `${secondary}44`;
-            document.getElementById('blob-2').style.backgroundColor = `${primary}44`;
-            document.getElementById('blob-3').style.backgroundColor = `${secondary}33`;
-
-            // Footer
-            document.getElementById('footer-logo-bg').style.backgroundColor = `${primary}22`;
-            document.getElementById('footer').style.borderColor = `${surface}`;
-            document.getElementById('social-1').style.backgroundColor = surface;
-            document.getElementById('social-2').style.backgroundColor = surface;
-
-            // Font family
-            const baseFontStack = 'Inter, sans-serif';
-            const headingStack = `${fontFamily}, ${baseFontStack}`;
-            
-            document.querySelectorAll('.heading-font').forEach(el => {
-                el.style.fontFamily = headingStack;
-            });
-
-            // Font size scaling
-            document.getElementById('hero-title').style.fontSize = `${fontSize * 3}px`;
-            document.getElementById('hero-subtitle').style.fontSize = `${fontSize * 1.25}px`;
-        }
-
-        // Interactive emoji animation on click/touch
-        const emojis = ['💊', '💉', '🏥', '🩺', '🧬', '💙', '✨', '⚕️', '🔬'];
-        
-        function createEmojiParticle(x, y) {
-            const emoji = document.createElement('div');
-            emoji.className = 'emoji-particle';
-            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-            emoji.style.left = `${x}px`;
-            emoji.style.top = `${y}px`;
-            document.body.appendChild(emoji);
-            
-            // Remove after animation
-            setTimeout(() => {
-                emoji.remove();
-            }, 2000);
-        }
-        
-        // Mouse click event
-        document.addEventListener('click', (e) => {
-            createEmojiParticle(e.clientX, e.clientY);
-        });
-        
-        // Touch event for mobile
-        document.addEventListener('touchstart', (e) => {
-            for (let i = 0; i < e.touches.length; i++) {
-                createEmojiParticle(e.touches[i].clientX, e.touches[i].clientY);
-            }
-        });
-
-        // Initialize SDK
-        if (window.elementSdk) {
-            window.elementSdk.init({
-                defaultConfig,
-                onConfigChange: async (cfg) => {
-                    config = { ...defaultConfig, ...cfg };
-                    applyConfig(config);
-                },
-                mapToCapabilities: (cfg) => ({
-                    recolorables: [
-                        {
-                            get: () => cfg.background_color || defaultConfig.background_color,
-                            set: (v) => { cfg.background_color = v; window.elementSdk.setConfig({ background_color: v }); }
-                        },
-                        {
-                            get: () => cfg.surface_color || defaultConfig.surface_color,
-                            set: (v) => { cfg.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); }
-                        },
-                        {
-                            get: () => cfg.text_color || defaultConfig.text_color,
-                            set: (v) => { cfg.text_color = v; window.elementSdk.setConfig({ text_color: v }); }
-                        },
-                        {
-                            get: () => cfg.primary_action || defaultConfig.primary_action,
-                            set: (v) => { cfg.primary_action = v; window.elementSdk.setConfig({ primary_action: v }); }
-                        },
-                        {
-                            get: () => cfg.secondary_action || defaultConfig.secondary_action,
-                            set: (v) => { cfg.secondary_action = v; window.elementSdk.setConfig({ secondary_action: v }); }
-                        }
-                    ],
-                    borderables: [],
-                    fontEditable: {
-                        get: () => cfg.font_family || defaultConfig.font_family,
-                        set: (v) => { cfg.font_family = v; window.elementSdk.setConfig({ font_family: v }); }
-                    },
-                    fontSizeable: {
-                        get: () => cfg.font_size || defaultConfig.font_size,
-                        set: (v) => { cfg.font_size = v; window.elementSdk.setConfig({ font_size: v }); }
-                    }
-                }),
-                mapToEditPanelValues: (cfg) => new Map([
-                    ['hero_title', cfg.hero_title || defaultConfig.hero_title],
-                    ['hero_subtitle', cfg.hero_subtitle || defaultConfig.hero_subtitle],
-                    ['button_text', cfg.button_text || defaultConfig.button_text]
-                ])
-            });
-        } else {
-            applyConfig(config);
-        }
-    </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c656d480585f876',t:'MTc2OTgyMjg0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
- <script>
     function jahe2() {
-        window.location.href = "try.html"
+      window.location.href = "try.html"
     }
     function jahe3() {
-        window.location.href = "tentang.html"
+      window.location.href = "tentang.html"
     }
     function bub3() {
-        window.location.href = "igss.html"
+      window.location.href = "igss.html"
     }
     function bub4() {
-        window.location.href = "tiktok.html"
+      window.location.href = "tiktok.html"
     }
     function bubub() {
-        window.location.href = "unu.html"
+      window.location.href = "unu.html"
     }
-    </script>
+  </script>
+  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c656d480585f876',t:'MTc2OTgyMjg0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c7e27c0903a5fb3',t:'MTc3MDA4MjE0NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
