@@ -6,7 +6,7 @@
   <title>Pharmacy - Solusi Farmasi Digital</title>
   <script src="/_sdk/element_sdk.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
   <style>
     body {
       box-sizing: border-box;
@@ -28,63 +28,73 @@
       width: 100%;
       overflow-y: auto;
       overflow-x: hidden;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Outfit', sans-serif;
+      background: #0a0e27;
+      color: #ffffff;
+      transition: background-color 0.5s ease, color 0.5s ease;
     }
     
     .heading-font {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.01em;
     }
     
     .hero-gradient {
-      background: linear-gradient(135deg, #0d9488 0%, #14b8a6 25%, #2dd4bf 50%, #5eead4 75%, #99f6e4 100%);
-      background-size: 400% 400%;
-      animation: gradientShift 8s ease infinite;
+      background: linear-gradient(180deg, #0a0e27 0%, #1a1f3a 50%, #0f1428 100%);
+      position: relative;
+      overflow: hidden;
+      transition: background 0.5s ease;
     }
     
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    @keyframes rainFall {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(800px) rotate(360deg);
+        opacity: 0;
+      }
     }
     
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
-    }
-    
-    .float-animation {
-      animation: float 6s ease-in-out infinite;
-    }
-    
-    .float-delay-1 {
-      animation-delay: 0.5s;
-    }
-    
-    .float-delay-2 {
-      animation-delay: 1s;
+    @keyframes rainFallVariant {
+      0% {
+        transform: translateY(-100px) translateX(0px) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(800px) translateX(20px) rotate(360deg);
+        opacity: 0;
+      }
     }
     
     @keyframes pulseGlow {
-      0%, 100% { box-shadow: 0 0 20px rgba(20, 184, 166, 0.4); }
-      50% { box-shadow: 0 0 40px rgba(20, 184, 166, 0.8); }
+      0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.4), inset 0 0 20px rgba(99, 102, 241, 0.1); }
+      50% { box-shadow: 0 0 40px rgba(99, 102, 241, 0.8), inset 0 0 30px rgba(99, 102, 241, 0.2); }
     }
     
     .pulse-glow {
-      animation: pulseGlow 3s ease-in-out infinite;
-    }
-    
-    .feature-card {
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-    
-    .feature-card:hover {
-      transform: translateY(-12px) scale(1.02);
+      animation: pulseGlow 2.5s ease-in-out infinite;
+      transition: box-shadow 0.5s ease;
     }
     
     @keyframes slideUp {
       from {
         opacity: 0;
-        transform: translateY(40px);
+        transform: translateY(30px);
       }
       to {
         opacity: 1;
@@ -93,7 +103,7 @@
     }
     
     .slide-up {
-      animation: slideUp 0.8s ease-out forwards;
+      animation: slideUp 0.7s ease-out forwards;
     }
     
     .delay-1 { animation-delay: 0.1s; opacity: 0; }
@@ -104,82 +114,112 @@
     
     .nav-link {
       position: relative;
-      overflow: hidden;
+      color: #a0a0b0;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      text-decoration: none;
     }
     
-    .nav-link::after {
-      display: none;
-    }
-    
-    .nav-link:hover::after {
-      display: none;
+    .nav-link:hover {
+      color: #6366f1;
     }
     
     .btn-primary {
       position: relative;
       overflow: hidden;
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+      color: white;
+      border: none;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      cursor: pointer;
     }
     
-    .btn-primary::before {
-      content: '';
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 40px rgba(99, 102, 241, 0.4);
+    }
+    
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+    
+    .gradient-orb {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      background: rgba(255, 255, 255, 0.3);
       border-radius: 50%;
-      transform: translate(-50%, -50%);
-      transition: width 0.6s ease, height 0.6s ease;
+      opacity: 0.15;
+      filter: blur(80px);
+      transition: background 0.5s ease;
     }
     
-    .btn-primary:hover::before {
+    .gradient-orb-1 {
       width: 300px;
       height: 300px;
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+      top: -100px;
+      left: -100px;
+      animation: floatOrb1 20s ease-in-out infinite;
     }
     
-    .shape-blob {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(60px);
-      opacity: 0.5;
+    .gradient-orb-2 {
+      width: 250px;
+      height: 250px;
+      background: linear-gradient(135deg, #ec4899 0%, #06b6d4 100%);
+      bottom: -80px;
+      right: -80px;
+      animation: floatOrb2 25s ease-in-out infinite;
+    }
+    
+    @keyframes floatOrb1 {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(50px, 50px); }
+    }
+    
+    @keyframes floatOrb2 {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(-40px, -40px); }
     }
     
     .glass {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(20, 24, 47, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+      transition: all 0.5s ease;
     }
     
     .emoji-particle {
       position: fixed;
       pointer-events: none;
       z-index: 9999;
-      font-size: 2rem;
+      font-size: 1.5rem;
       animation: floatUpFade 2s ease-out forwards;
     }
     
     @keyframes floatUpFade {
       0% {
         opacity: 1;
-        transform: translateY(0) scale(0.5) rotate(0deg);
+        transform: translateY(0) scale(0.6) rotate(0deg);
       }
       50% {
         opacity: 1;
-        transform: translateY(-100px) scale(1) rotate(180deg);
+        transform: translateY(-80px) scale(1) rotate(120deg);
       }
       100% {
         opacity: 0;
-        transform: translateY(-200px) scale(0.3) rotate(360deg);
+        transform: translateY(-160px) scale(0.2) rotate(240deg);
       }
     }
 
     .container-foto {
       width: 100%;
       max-width: 60px;
-      border: 3px solid transparent;
-      border-radius: 10px;
+      border: 2px solid rgba(99, 102, 241, 0.3);
+      border-radius: 12px;
       overflow: hidden;
+      background: rgba(20, 24, 47, 0.5);
+      transition: all 0.5s ease;
     }
 
     .container-foto img {
@@ -187,54 +227,156 @@
       display: block;
     }
 
-    /* RESPONSIVE MOBILE OPTIMIZATION */
-    @media (max-width: 768px) {
-      .shape-blob {
-        width: 200px !important;
-        height: 200px !important;
-      }
+    /* Light Mode Styles */
+    .light-mode {
+      background: #f0fdf4 !important;
+    }
 
-      #blob-1 {
+    .light-mode .hero-gradient {
+      background: linear-gradient(180deg, #f0fdf4 0%, #e0f7e0 50%, #d4f4dd 100%) !important;
+    }
+
+    .light-mode .app-wrapper {
+      background: #f0fdf4 !important;
+      color: #1a3a1a !important;
+    }
+
+    .light-mode #logo-text {
+      color: #1a3a1a !important;
+    }
+
+    .light-mode #logo-accent {
+      color: #2d7a3e !important;
+    }
+
+    .light-mode .nav-link {
+      color: #4d6e50 !important;
+    }
+
+    .light-mode .nav-link:hover {
+      color: #2d7a3e !important;
+    }
+
+    .light-mode #badge {
+      background-color: rgba(45, 122, 62, 0.15) !important;
+      color: #2d7a3e !important;
+      border-color: rgba(45, 122, 62, 0.3) !important;
+    }
+
+    .light-mode #hero-title {
+      color: #1a3a1a !important;
+    }
+
+    .light-mode #hero-subtitle {
+      color: rgba(26, 58, 26, 0.7) !important;
+    }
+
+    .light-mode #cta-btn {
+      background: linear-gradient(135deg, #2d7a3e 0%, #4d9966 100%) !important;
+      color: white !important;
+    }
+
+    .light-mode #cta-btn:hover {
+      box-shadow: 0 20px 40px rgba(45, 122, 62, 0.3) !important;
+    }
+
+    .light-mode #main-shape {
+      background: linear-gradient(180deg, #d4f4dd 0%, #9dd9a8 50%, #6ec27f 100%) !important;
+      border-color: rgba(45, 122, 62, 0.4) !important;
+    }
+
+    .light-mode #footer {
+      background-color: rgba(212, 244, 221, 0.4) !important;
+      border-color: rgba(45, 122, 62, 0.2) !important;
+    }
+
+    .light-mode #footer-desc {
+      color: rgba(26, 58, 26, 0.7) !important;
+    }
+
+    .light-mode #footer-h1,
+    .light-mode #footer-h3 {
+      color: #1a3a1a !important;
+    }
+
+    .light-mode .glass {
+      background: rgba(240, 253, 244, 0.7) !important;
+      border-color: rgba(45, 122, 62, 0.2) !important;
+      box-shadow: 0 4px 16px rgba(45, 122, 62, 0.1) !important;
+    }
+
+    .light-mode .container-foto {
+      border-color: rgba(45, 122, 62, 0.3) !important;
+      background: rgba(212, 244, 221, 0.5) !important;
+    }
+
+    .light-mode .gradient-orb-1 {
+      background: linear-gradient(135deg, #2d7a3e 0%, #4d9966 100%) !important;
+    }
+
+    .light-mode .gradient-orb-2 {
+      background: linear-gradient(135deg, #6ec27f 0%, #2d7a3e 100%) !important;
+    }
+
+    .light-mode #logo-bg,
+    .light-mode #footer-logo-bg {
+      background-color: rgba(45, 122, 62, 0.15) !important;
+      border-color: rgba(45, 122, 62, 0.3) !important;
+    }
+
+    .light-mode #social-1,
+    .light-mode #social-2 {
+      background-color: rgba(45, 122, 62, 0.15) !important;
+    }
+
+    .light-mode #social-1:hover,
+    .light-mode #social-2:hover {
+      background-color: rgba(45, 122, 62, 0.3) !important;
+    }
+
+    .light-mode #mode-btn {
+      background-color: rgba(212, 244, 221, 0.5) !important;
+      color: #2d7a3e !important;
+      border: 1px solid rgba(45, 122, 62, 0.2) !important;
+    }
+
+    .light-mode #mode-btn:hover {
+      background-color: rgba(212, 244, 221, 0.8) !important;
+      color: #1a3a1a !important;
+    }
+
+    .light-mode ul li a {
+      color: #4d6e50 !important;
+    }
+
+    .light-mode #copyright {
+      color: rgba(26, 58, 26, 0.6) !important;
+    }
+
+    #mode-btn {
+      transition: all 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+      .gradient-orb-1 {
         width: 150px !important;
         height: 150px !important;
       }
 
-      #blob-2 {
-        width: 130px !important;
-        height: 130px !important;
-      }
-
-      #blob-3 {
-        width: 100px !important;
-        height: 100px !important;
+      .gradient-orb-2 {
+        width: 120px !important;
+        height: 120px !important;
       }
 
       .hero-gradient .max-w-7xl {
         padding-top: 100px !important;
-        padding-bottom: 30px !important;
-      }
-
-      .float-animation {
-        animation: none;
-      }
-
-      .float-delay-1,
-      .float-delay-2 {
-        animation: none !important;
+        padding-bottom: 40px !important;
       }
 
       .absolute.top-32,
       .absolute.bottom-40,
       .absolute.top-1\\/2 {
         display: none !important;
-      }
-
-      .feature-card:hover {
-        transform: translateY(-8px) scale(1.01);
-      }
-
-      .btn-primary::before {
-        display: none;
       }
 
       .relative.w-80 {
@@ -245,20 +387,6 @@
       .relative.w-80 .text-9xl {
         font-size: 4rem !important;
       }
-
-      .absolute.-top-4,
-      .absolute.top-1\\/2,
-      .absolute.-bottom-4 {
-        width: 12px !important;
-        height: 12px !important;
-      }
-
-      .absolute.-top-4 .text-2xl,
-      .absolute.top-1\\/2 .text-2xl,
-      .absolute.-bottom-4 .text-2xl,
-      .absolute.-left-4 .text-2xl {
-        font-size: 1rem !important;
-      }
     }
 
     @media (max-width: 640px) {
@@ -267,7 +395,7 @@
       }
 
       .slide-up {
-        animation: slideUp 0.6s ease-out forwards !important;
+        animation: slideUp 0.5s ease-out forwards !important;
       }
 
       .delay-1,
@@ -283,7 +411,7 @@
       }
 
       .text-5xl {
-        font-size: 1.875rem !important;
+        font-size: 1.75rem !important;
       }
 
       .text-4xl {
@@ -359,7 +487,7 @@
       }
 
       .relative.w-80 .text-9xl {
-        font-size: 3rem !important;
+        font-size: 2.5rem !important;
       }
 
       .text-sm {
@@ -398,267 +526,114 @@
     <div class="max-w-7xl mx-auto px-6 py-4">
      <div class="flex items-center justify-between">
       <div class="flex items-center gap-3">
-       <div class="container-foto"><img src="unukase.png" alt="Logo Unukase" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='#14b8a6'; this.alt='Logo unavailable';">
+       <div class="container-foto"><img src="unukase.png" alt="Logo Unukase" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='#6366f1'; this.alt='Logo unavailable';">
        </div>
-       <div class="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl pulse-glow" id="logo-bg">
+       <div class="w-12 h-12 rounded-lg flex items-center justify-center text-2xl pulse-glow bg-indigo-900 bg-opacity-50" id="logo-bg">
         💊
-       </div><span class="text-2xl font-bold heading-font" id="logo-text"> Phar<span id="logo-accent">macy</span> </span>
+       </div><span class="text-xl font-bold heading-font" id="logo-text">Phar<span id="logo-accent">macy</span></span>
       </div>
-      <ul class="hidden md:flex items-center gap-8">
-       <li><a href="#" class="nav-link py-2 font-medium transition-colors" id="nav-3">Konsultasi</a></li>
-       <li><button onclick="jahe3()"><a href="#" class="nav-link py-2 font-medium transition-colors" id="nav-4">Tentang Kami</a></button></li>
-      </ul><button class="md:hidden text-2xl" id="mobile-menu-btn">☰</button>
+      <div class="flex items-center gap-6">
+       <ul class="hidden md:flex items-center gap-8">
+        <li><a href="#" class="nav-link py-2 font-medium transition-colors" id="nav-3">Konsultasi</a></li>
+        <li><button onclick="jahe3()"><a href="#" class="nav-link py-2 font-medium transition-colors" id="nav-4">Tentang Kami</a></button></li>
+       </ul><button onclick="toggleLightMode()" class="px-4 py-2 rounded-lg font-medium transition-all duration-300 bg-indigo-900 bg-opacity-40 hover:bg-opacity-60 text-indigo-300 hover:text-indigo-200" id="mode-btn">☀️ Siang</button>
+      </div><button class="md:hidden text-2xl" id="mobile-menu-btn">☰</button>
      </div>
     </div>
    </nav><!-- Hero Section -->
    <header class="hero-gradient relative min-h-screen flex items-center overflow-hidden">
-    <div class="shape-blob w-96 h-96 -top-20 -left-20 float-animation" id="blob-1"></div>
-    <div class="shape-blob w-80 h-80 top-1/3 -right-10 float-animation float-delay-1" id="blob-2"></div>
-    <div class="shape-blob w-64 h-64 bottom-20 left-1/4 float-animation float-delay-2" id="blob-3"></div>
-    <div class="absolute top-32 right-20 text-6xl float-animation opacity-20">
+    <div class="gradient-orb gradient-orb-1"></div>
+    <div class="gradient-orb gradient-orb-2"></div><!-- Background Icons - Raining Effect -->
+    <div class="absolute left-1/4 -top-20 text-6xl opacity-20 pointer-events-none" style="animation: rainFall 12s linear infinite;">
      💊
     </div>
-    <div class="absolute bottom-40 left-20 text-5xl float-animation float-delay-1 opacity-20">
+    <div class="absolute left-1/3 -top-32 text-5xl opacity-15 pointer-events-none" style="animation: rainFallVariant 14s linear infinite 2s;">
+     💉
+    </div>
+    <div class="absolute left-1/2 -top-24 text-5xl opacity-20 pointer-events-none" style="animation: rainFall 13s linear infinite 1s;">
+     🩺
+    </div>
+    <div class="absolute right-1/4 -top-28 text-4xl opacity-15 pointer-events-none" style="animation: rainFallVariant 15s linear infinite 3s;">
+     🧬
+    </div>
+    <div class="absolute left-1/5 -top-20 text-5xl opacity-15 pointer-events-none" style="animation: rainFall 12.5s linear infinite 1.5s;">
+     💊
+    </div>
+    <div class="absolute right-1/3 -top-28 text-5xl opacity-20 pointer-events-none" style="animation: rainFallVariant 14.5s linear infinite 0.5s;">
+     🩺
+    </div>
+    <div class="absolute left-2/3 -top-24 text-5xl opacity-18 pointer-events-none" style="animation: rainFall 13.5s linear infinite 2.5s;">
+     ⚕️
+    </div>
+    <div class="absolute right-1/5 -top-20 text-5xl opacity-15 pointer-events-none" style="animation: rainFallVariant 12s linear infinite 0.8s;">
+     🔬
+    </div>
+    <div class="absolute left-1/12 -top-28 text-4xl opacity-18 pointer-events-none" style="animation: rainFall 14s linear infinite 3.5s;">
+     🧪
+    </div>
+    <div class="absolute right-2/3 -top-32 text-5xl opacity-15 pointer-events-none" style="animation: rainFallVariant 13s linear infinite 1.2s;">
+     💙
+    </div>
+    <div class="absolute left-3/4 -top-20 text-5xl opacity-20 pointer-events-none" style="animation: rainFall 12.5s linear infinite 2s;">
      🏥
     </div>
-    <div class="absolute top-1/2 right-40 text-4xl float-animation float-delay-2 opacity-20">
+    <div class="absolute right-1/12 -top-24 text-4xl opacity-18 pointer-events-none" style="animation: rainFallVariant 14.5s linear infinite 1.8s;">
+     🧬
+    </div>
+    <div class="absolute left-2/5 -top-28 text-5xl opacity-15 pointer-events-none" style="animation: rainFall 13s linear infinite 0.3s;">
+     ⚕️
+    </div>
+    <div class="absolute right-2/5 -top-20 text-5xl opacity-20 pointer-events-none" style="animation: rainFallVariant 15.5s linear infinite 2.2s;">
+     💊
+    </div>
+    <div class="absolute left-11/12 -top-24 text-4xl opacity-15 pointer-events-none" style="animation: rainFall 12s linear infinite 2.8s;">
+     🔬
+    </div>
+    <div class="absolute right-1/2 -top-28 text-5xl opacity-18 pointer-events-none" style="animation: rainFallVariant 13.5s linear infinite 0.6s;">
      💉
     </div>
     <div class="max-w-7xl mx-auto px-6 pt-32 pb-20 relative z-10 w-full">
      <div class="grid lg:grid-cols-2 gap-12 items-center">
       <div class="text-center lg:text-left">
-       <div class="inline-block px-4 py-2 rounded-full text-sm font-medium mb-6 slide-up delay-1" id="badge">
-        🌟 Platform Farmasi Buatan UNUKASE
+       <div class="inline-block px-4 py-2 rounded-lg text-sm font-medium mb-6 slide-up delay-1 bg-indigo-900 bg-opacity-40 text-indigo-300 border border-indigo-700 border-opacity-50" id="badge">
+        ✨ Platform Farmasi Buatan UNUKASE
        </div>
        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold heading-font leading-tight mb-6 slide-up delay-2" id="hero-title">Semua Tentang FARMASI ada disini</h1>
-       <p class="text-lg md:text-xl opacity-90 mb-8 max-w-xl mx-auto lg:mx-0 slide-up delay-3" id="hero-subtitle">Dapatkan semua informasi tentang FARMASI disini. Konsultasi, beli obat, dan pesan antar dalam satu platform.</p>
-       <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start slide-up delay-4"><button class="btn-primary px-8 py-4 rounded-2xl font-semibold text-lg shadow-xl transition-all hover:scale-105 w-full sm:w-auto" id="cta-btn" onclick="jahe2()"> <span id="button-text">Pelajari Selengkapnya</span> → </button>
+       <p class="text-lg md:text-xl text-gray-400 mb-8 max-w-xl mx-auto lg:mx-0 slide-up delay-3" id="hero-subtitle">Dapatkan semua informasi tentang FARMASI disini. Konsultasi, beli obat, dan pesan antar dalam satu platform.</p>
+       <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start slide-up delay-4"><button class="btn-primary px-8 py-4 rounded-lg font-semibold text-lg shadow-lg transition-all hover:shadow-xl w-full sm:w-auto" id="cta-btn" onclick="jahe2()"> <span id="button-text">Pelajari Selengkapnya</span> → </button>
        </div>
       </div>
       <div class="relative flex justify-center slide-up delay-5">
-       <div class="relative w-80 h-80 md:w-96 md:h-96">
-        <div class="absolute inset-0 rounded-full glass flex items-center justify-center">
-         <div class="text-9xl float-animation">
+       <div class="relative w-80 h-80 md:w-96 md:h-96 flex items-center justify-center">
+        <div class="absolute inset-0 rounded-full bg-gradient-to-br from-indigo-900 from-30% to-purple-900 to-100% shadow-2xl flex items-center justify-center border border-indigo-700 border-opacity-40 transition-all duration-500" id="main-shape">
+         <div class="text-9xl">
           🏥
          </div>
-        </div>
-        <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-16 h-16 rounded-2xl flex items-center justify-center text-2xl shadow-lg float-animation" id="orbit-1">
-         💊
-        </div>
-        <div class="absolute top-1/2 -right-4 -translate-y-1/2 w-16 h-16 rounded-2xl flex items-center justify-center text-2xl shadow-lg float-animation float-delay-1" id="orbit-2">
-         💉
-        </div>
-        <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 w-16 h-16 rounded-2xl flex items-center justify-center text-2xl shadow-lg float-animation float-delay-2" id="orbit-3">
-         🩺
-        </div>
-        <div class="absolute top-1/2 -left-4 -translate-y-1/2 w-16 h-16 rounded-2xl flex items-center justify-center text-2xl shadow-lg float-animation" id="orbit-4">
-         🧬
         </div>
        </div>
       </div>
      </div>
     </div>
-    <div class="absolute bottom-0 left-0 right-0">
-     <svg viewbox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0 120L60 105C120 90 240 60 360 52.5C480 45 600 37.5 720 37.5C840 37.5 960 45 1080 52.5C1200 60 1320 75 1440 75V120H1380C1320 120C1200 120C1080 120C960 120C840 120H0Z" id="wave-fill" />
-     </svg>
-    </div>
    </header><!-- Footer -->
-   <footer class="py-12 px-6 border-t" id="footer">
+   <footer class="py-12 px-6 border-t border-indigo-900 border-opacity-40 bg-black bg-opacity-40 transition-all duration-500" id="footer">
     <div class="max-w-7xl mx-auto w-full">
      <div class="grid md:grid-cols-3 gap-8 mb-8">
       <div>
        <div class="flex items-center gap-3 mb-4">
-        <div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl" id="footer-logo-bg">
+        <div class="w-10 h-10 rounded-lg flex items-center justify-center text-xl bg-indigo-900 bg-opacity-50 transition-all duration-500" id="footer-logo-bg">
          💊
-        </div><span class="text-xl font-bold heading-font" id="footer-logo-text">Pharmacy</span>
+        </div><span class="text-lg font-bold heading-font" id="footer-logo-text">Pharmacy</span>
        </div>
-       <p class="opacity-70 text-sm" id="footer-desc">Platform Farmasi UNUKASE Digital Yang Bisa Diakses Semua Orang.</p>
+       <p class="opacity-60 text-sm text-gray-400 transition-colors duration-500" id="footer-desc">Platform Farmasi UNUKASE Digital Yang Bisa Diakses Semua Orang.</p>
       </div>
-      <div><button onclick="jahe3()"><h4 class="font-semibold mb-4" id="footer-h1">Tentang Kami</h4></button>
-       <ul class="space-y-2 opacity-70 text-sm">
-        <li><button onclick="bubub()"><a href="#" class="hover:opacity-100 transition-opacity">Profil Kampus</a></button></li>
-        <li><a href="#" class="hover:opacity-100 transition-opacity">Visi &amp; Misi</a></li>
-        <li><a href="#" class="hover:opacity-100 transition-opacity">Tim Kami</a></li>
-        <li><a href="#" class="hover:opacity-100 transition-opacity">Kontak</a></li>
+      <div><button onclick="jahe3()"><h4 class="font-semibold mb-4 transition-colors duration-500" id="footer-h1">Tentang Kami</h4></button>
+       <ul class="space-y-2 opacity-60 text-sm text-gray-400 transition-colors duration-500">
+        <li><button onclick="bubub()"><a href="#" class="hover:opacity-100 transition-opacity hover:text-indigo-400">Profil Kampus</a></button></li>
+        <li><a href="#" class="hover:opacity-100 transition-opacity hover:text-indigo-400">Visi &amp; Misi</a></li>
+        <li><a href="#" class="hover:opacity-100 transition-opacity hover:text-indigo-400">Tim Kami</a></li>
+        <li><a href="#" class="hover:opacity-100 transition-opacity hover:text-indigo-400">Kontak</a></li>
        </ul>
       </div>
       <div>
-       <h4 class="font-semibold mb-4" id="footer-h3">Ikuti Kami</h4>
-       <div class="flex gap-3"><button onclick="bub3()"><a href="#" class="w-10 h-10 rounded-xl flex items-center justify-center transition-transform hover:scale-110" id="social-1">📸</a></button> <button onclick="bub4()"><a href="#" class="w-10 h-10 rounded-xl flex items-center justify-center transition-transform hover:scale-110" id="social-2">🎵</a></button>
-       </div>
-      </div>
-     </div>
-     <div class="pt-8 border-t text-center opacity-70 text-sm" id="copyright">
-      <p>© 2026 Pharmacy UNUKASE. Semua hak dilindungi.</p>
-     </div>
-    </div>
-   </footer>
-  </div>
-  <script>
-    const defaultConfig = {
-      background_color: '#0f172a',
-      surface_color: '#1e293b',
-      text_color: '#f8fafc',
-      primary_action: '#14b8a6',
-      secondary_action: '#5eead4',
-      font_family: 'Space Grotesk',
-      font_size: 16,
-      hero_title: 'Semua Tentang FARMASI ada disini',
-      hero_subtitle: 'Dapatkan semua informasi tentang FARMASI disini. Konsultasi, beli obat, dan pesan antar dalam satu platform.',
-      button_text: 'Pelajari Selengkapnya'
-    };
-
-    let config = { ...defaultConfig };
-
-    function applyConfig(cfg) {
-      const bg = cfg.background_color || defaultConfig.background_color;
-      const surface = cfg.surface_color || defaultConfig.surface_color;
-      const text = cfg.text_color || defaultConfig.text_color;
-      const primary = cfg.primary_action || defaultConfig.primary_action;
-      const secondary = cfg.secondary_action || defaultConfig.secondary_action;
-      const fontFamily = cfg.font_family || defaultConfig.font_family;
-      const fontSize = cfg.font_size || defaultConfig.font_size;
-
-      document.getElementById('app-wrapper').style.backgroundColor = bg;
-      document.getElementById('footer').style.backgroundColor = bg;
-      document.getElementById('wave-fill').setAttribute('fill', bg);
-
-      document.getElementById('app-wrapper').style.color = text;
-      document.getElementById('logo-text').style.color = text;
-      document.getElementById('logo-accent').style.color = primary;
-      
-      for (let i = 1; i <= 4; i++) {
-        const el = document.getElementById(`nav-${i}`);
-        if (el) el.style.color = text;
-      }
-
-      document.getElementById('badge').style.backgroundColor = `${bg}cc`;
-      document.getElementById('badge').style.color = secondary;
-      document.getElementById('hero-title').textContent = cfg.hero_title || defaultConfig.hero_title;
-      document.getElementById('hero-subtitle').textContent = cfg.hero_subtitle || defaultConfig.hero_subtitle;
-      document.getElementById('button-text').textContent = cfg.button_text || defaultConfig.button_text;
-
-      document.getElementById('cta-btn').style.backgroundColor = primary;
-      document.getElementById('cta-btn').style.color = bg;
-
-      document.getElementById('logo-bg').style.backgroundColor = `${primary}22`;
-      
-      for (let i = 1; i <= 4; i++) {
-        document.getElementById(`orbit-${i}`).style.backgroundColor = surface;
-      }
-
-      document.getElementById('blob-1').style.backgroundColor = `${secondary}44`;
-      document.getElementById('blob-2').style.backgroundColor = `${primary}44`;
-      document.getElementById('blob-3').style.backgroundColor = `${secondary}33`;
-
-      document.getElementById('footer-logo-bg').style.backgroundColor = `${primary}22`;
-      document.getElementById('footer').style.borderColor = `${surface}`;
-      document.getElementById('social-1').style.backgroundColor = surface;
-      document.getElementById('social-2').style.backgroundColor = surface;
-
-      const baseFontStack = 'Inter, sans-serif';
-      const headingStack = `${fontFamily}, ${baseFontStack}`;
-      
-      document.querySelectorAll('.heading-font').forEach(el => {
-        el.style.fontFamily = headingStack;
-      });
-
-      document.getElementById('hero-title').style.fontSize = `${fontSize * 3}px`;
-      document.getElementById('hero-subtitle').style.fontSize = `${fontSize * 1.25}px`;
-    }
-
-    const emojis = ['💊', '💉', '🏥', '🩺', '🧬', '💙', '✨', '⚕️', '🔬'];
-    
-    function createEmojiParticle(x, y) {
-      const emoji = document.createElement('div');
-      emoji.className = 'emoji-particle';
-      emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-      emoji.style.left = `${x}px`;
-      emoji.style.top = `${y}px`;
-      document.body.appendChild(emoji);
-      
-      setTimeout(() => {
-        emoji.remove();
-      }, 2000);
-    }
-    
-    document.addEventListener('click', (e) => {
-      createEmojiParticle(e.clientX, e.clientY);
-    });
-    
-    document.addEventListener('touchstart', (e) => {
-      for (let i = 0; i < e.touches.length; i++) {
-        createEmojiParticle(e.touches[i].clientX, e.touches[i].clientY);
-      }
-    });
-
-    if (window.elementSdk) {
-      window.elementSdk.init({
-        defaultConfig,
-        onConfigChange: async (cfg) => {
-          config = { ...defaultConfig, ...cfg };
-          applyConfig(config);
-        },
-        mapToCapabilities: (cfg) => ({
-          recolorables: [
-            {
-              get: () => cfg.background_color || defaultConfig.background_color,
-              set: (v) => { cfg.background_color = v; window.elementSdk.setConfig({ background_color: v }); }
-            },
-            {
-              get: () => cfg.surface_color || defaultConfig.surface_color,
-              set: (v) => { cfg.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); }
-            },
-            {
-              get: () => cfg.text_color || defaultConfig.text_color,
-              set: (v) => { cfg.text_color = v; window.elementSdk.setConfig({ text_color: v }); }
-            },
-            {
-              get: () => cfg.primary_action || defaultConfig.primary_action,
-              set: (v) => { cfg.primary_action = v; window.elementSdk.setConfig({ primary_action: v }); }
-            },
-            {
-              get: () => cfg.secondary_action || defaultConfig.secondary_action,
-              set: (v) => { cfg.secondary_action = v; window.elementSdk.setConfig({ secondary_action: v }); }
-            }
-          ],
-          borderables: [],
-          fontEditable: {
-            get: () => cfg.font_family || defaultConfig.font_family,
-            set: (v) => { cfg.font_family = v; window.elementSdk.setConfig({ font_family: v }); }
-          },
-          fontSizeable: {
-            get: () => cfg.font_size || defaultConfig.font_size,
-            set: (v) => { cfg.font_size = v; window.elementSdk.setConfig({ font_size: v }); }
-          }
-        }),
-        mapToEditPanelValues: (cfg) => new Map([
-          ['hero_title', cfg.hero_title || defaultConfig.hero_title],
-          ['hero_subtitle', cfg.hero_subtitle || defaultConfig.hero_subtitle],
-          ['button_text', cfg.button_text || defaultConfig.button_text]
-        ])
-      });
-    } else {
-      applyConfig(config);
-    }
-
-    function jahe2() {
-      window.location.href = "try.html"
-    }
-    function jahe3() {
-      window.location.href = "tentang.html"
-    }
-    function bub3() {
-      window.location.href = "igss.html"
-    }
-    function bub4() {
-      window.location.href = "tiktok.html"
-    }
-    function bubub() {
-      window.location.href = "unu.html"
-    }
-  </script>
-  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c656d480585f876',t:'MTc2OTgyMjg0OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c7e27c0903a5fb3',t:'MTc3MDA4MjE0NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
-</html>
+       <h4 class="font-semibold mb-4 transition-colors duration-500" id="footer-h3">Ikuti Kami</h4>
+       <div class="flex gap-3"><button onclick="bub3()"><a href="#" class="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:scale-110 bg-indigo-900 bg-opacity-40 hover:bg-indigo-800 hover:bg-opacity-60" id="social-1">📸</a></button> <button onclick="bub4()"><a href="#" class="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:scale-110 bg-indigo-900 bg-opacity-40 hover:bg-
