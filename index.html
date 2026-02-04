@@ -636,4 +636,77 @@
       </div>
       <div>
        <h4 class="font-semibold mb-4 transition-colors duration-500" id="footer-h3">Ikuti Kami</h4>
-       <div class="flex gap-3"><button onclick="bub3()"><a href="#" class="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:scale-110 bg-indigo-900 bg-opacity-40 hover:bg-indigo-800 hover:bg-opacity-60" id="social-1">📸</a></button> <button onclick="bub4()"><a href="#" class="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:scale-110 bg-indigo-900 bg-opacity-40 hover:bg-
+       <div class="flex gap-3"><button onclick="bub3()"><a href="#" class="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:scale-110 bg-indigo-900 bg-opacity-40 hover:bg-indigo-800 hover:bg-opacity-60" id="social-1">📸</a></button> <button onclick="bub4()"><a href="#" class="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:scale-110 bg-indigo-900 bg-opacity-40 hover:bg-indigo-800 hover:bg-opacity-60" id="social-2">🎵</a></button>
+       </div>
+      </div>
+     </div>
+     <div class="pt-8 border-t border-indigo-900 border-opacity-40 text-center opacity-60 text-sm text-gray-400 transition-colors duration-500" id="copyright">
+      <p>© 2026 Pharmacy UNUKASE. Semua hak dilindungi.</p>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+    let isLightMode = false;
+
+    function toggleLightMode() {
+      isLightMode = !isLightMode;
+      const wrapper = document.getElementById('app-wrapper');
+      const btn = document.getElementById('mode-btn');
+      
+      if (isLightMode) {
+        wrapper.classList.add('light-mode');
+        btn.textContent = '🌙 Malam';
+      } else {
+        wrapper.classList.remove('light-mode');
+        btn.textContent = '☀️ Siang';
+      }
+    }
+
+    function jahe2() {
+      window.location.href = "try.html"
+    }
+
+    function jahe3() {
+      window.location.href = "tentang.html"
+    }
+
+    function bub3() {
+      window.location.href = "igss.html"
+    }
+
+    function bub4() {
+      window.location.href = "tiktok.html"
+    }
+
+    function bubub() {
+      window.location.href = "unu.html"
+    }
+
+    const emojis = ['💊', '💉', '🏥', '🩺', '🧬', '💙', '✨', '⚕️', '🔬'];
+    
+    function createEmojiParticle(x, y) {
+      const emoji = document.createElement('div');
+      emoji.className = 'emoji-particle';
+      emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      emoji.style.left = `${x}px`;
+      emoji.style.top = `${y}px`;
+      document.body.appendChild(emoji);
+      
+      setTimeout(() => {
+        emoji.remove();
+      }, 2000);
+    }
+    
+    document.addEventListener('click', (e) => {
+      createEmojiParticle(e.clientX, e.clientY);
+    });
+    
+    document.addEventListener('touchstart', (e) => {
+      for (let i = 0; i < e.touches.length; i++) {
+        createEmojiParticle(e.touches[i].clientX, e.touches[i].clientY);
+      }
+    });
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c86b3ee90b36be2',t:'MTc3MDE3MTc3My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
