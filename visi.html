@@ -1,0 +1,430 @@
+\<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visi Misi</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Source+Sans+3:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    .font-heading {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+    
+    .font-body {
+      font-family: 'Source Sans 3', system-ui, sans-serif;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    .animate-fade-up {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    
+    .animate-scale-in {
+      animation: scaleIn 0.6s ease-out forwards;
+    }
+    
+    .animate-slide-left {
+      animation: slideInLeft 0.6s ease-out forwards;
+    }
+    
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    .delay-5 { animation-delay: 0.5s; }
+    .delay-6 { animation-delay: 0.6s; }
+    
+    .mission-item {
+      opacity: 0;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .vision-card {
+      background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .vision-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #1e3a5f, #c9a959);
+    }
+    
+    .mission-card {
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    
+    .mission-card:hover {
+      transform: translateX(8px);
+    }
+    
+    .mission-number {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+    
+    .decorative-line {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, #c9a959, transparent);
+    }
+
+    .back-button {
+      transition: all 0.3s ease;
+    }
+    
+    .back-button:hover {
+      transform: translateX(-4px);
+      box-shadow: 0 10px 25px -5px rgba(30, 58, 95, 0.2);
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <style>@view-transition { navigation: auto; }</style>
+ </head>
+ <body class="h-full font-body">
+  <div id="app-wrapper" class="h-full w-full overflow-auto" style="background: linear-gradient(135deg, #f0f4f8 0%, #e8eff5 50%, #f5f0e8 100%);">
+   <!-- Decorative Background Elements -->
+   <div class="fixed top-0 right-0 w-96 h-96 opacity-10 pointer-events-none">
+    <svg viewbox="0 0 200 200" class="w-full h-full">
+     <circle cx="150" cy="50" r="120" fill="#1e3a5f" opacity="0.3" /> <circle cx="100" cy="100" r="80" fill="#c9a959" opacity="0.2" />
+    </svg>
+   </div>
+   <div class="relative z-10 max-w-5xl mx-auto px-6 py-12 md:py-16">
+    <!-- Back Button -->
+    <div class="mb-10 animate-fade-up"><button onclick="window.history.back()" class="back-button inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/90 backdrop-blur-sm shadow-lg hover:bg-white border border-slate-200/60 group">
+      <svg class="w-5 h-5 text-slate-700 group-hover:text-slate-900 transition-colors" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+      </svg><span class="text-sm font-semibold text-slate-700 group-hover:text-slate-900 transition-colors">Kembali</span> </button>
+    </div><!-- Header -->
+    <header class="text-center mb-16 animate-fade-up">
+     <div class="flex justify-center mb-6">
+      <img id="logo-img" src="unukase.png" alt="Logo Organisasi" loading="lazy" class="w-32 h-32 object-contain rounded-lg shadow-md" onerror="console.error('Logo failed to load:', this.src); this.style.background='#e5e7eb'; this.alt='Logo tidak tersedia';">
+     </div>
+     <div class="inline-flex items-center gap-3 mb-4">
+      <div class="w-12 h-0.5 bg-gradient-to-r from-transparent to-green-600"></div>
+      <svg class="w-10 h-10 text-purple-500" viewbox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+       <!-- Tangkai --> <line x1="50" y1="65" x2="50" y2="85" stroke="currentColor" stroke-width="2" /> <!-- Daun kiri --> <path d="M 45 70 Q 35 68 32 75" stroke="currentColor" stroke-width="1.5" fill="none" /> <!-- Daun kanan --> <path d="M 55 70 Q 65 68 68 75" stroke="currentColor" stroke-width="1.5" fill="none" /> <!-- Bunga lavender - 5 kelopak --> <circle cx="50" cy="32" r="4" fill="currentColor" /> <circle cx="58" cy="38" r="4" fill="currentColor" /> <circle cx="62" cy="48" r="4" fill="currentColor" /> <circle cx="42" cy="48" r="4" fill="currentColor" /> <circle cx="38" cy="38" r="4" fill="currentColor" /> <!-- Pusat bunga --> <circle cx="50" cy="45" r="3" fill="currentColor" opacity="0.7" />
+      </svg>
+      <div class="w-12 h-0.5 bg-gradient-to-l from-transparent to-green-600"></div>
+     </div>
+     <h1 id="company-name" class="font-heading text-4xl md:text-5xl font-bold gradient-text mb-2">FLEMICILLIN</h1>
+     <p class="text-slate-500 text-lg tracking-widest uppercase font-light">Visi &amp; Misi</p>
+    </header><!-- Vision Section -->
+    <section class="mb-16 animate-scale-in delay-2" style="opacity: 0;">
+     <div class="vision-card rounded-2xl shadow-xl p-8 md:p-10">
+      <div class="flex items-center gap-4 mb-6">
+       <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center shadow-lg">
+        <svg class="w-7 h-7 text-amber-400" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+         <circle cx="12" cy="12" r="3" /> <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+        </svg>
+       </div>
+       <div>
+        <h2 id="vision-title" class="font-heading text-2xl md:text-3xl font-semibold text-slate-800">Visi</h2>
+        <div class="decorative-line mt-1"></div>
+       </div>
+      </div>
+      <p id="vision-text" class="text-lg md:text-xl text-slate-600 leading-relaxed pl-0 md:pl-[74px]">Menjadi Program Studi yang unggul dan berdaya saing bidang ilmu Farmasi dalam pembangunan pedesaan berlandaskan nilai nilai Islam Rahmatan lil'alamin tingkat ASEAN tahun 2034.</p>
+     </div>
+    </section><!-- Mission Section -->
+    <section class="animate-fade-up delay-3" style="opacity: 0;">
+     <div class="bg-white/60 backdrop-blur-sm rounded-2xl shadow-xl p-8 md:p-10">
+      <div class="flex items-center gap-4 mb-8">
+       <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center shadow-lg">
+        <svg class="w-7 h-7 text-white" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /> <polyline points="22 4 12 14.01 9 11.01" />
+        </svg>
+       </div>
+       <div>
+        <h2 id="mission-title" class="font-heading text-2xl md:text-3xl font-semibold text-slate-800">Misi</h2>
+        <div class="decorative-line mt-1"></div>
+       </div>
+      </div>
+      <div class="space-y-4" id="mission-list">
+       <div class="mission-item mission-card flex items-start gap-4 p-4 rounded-xl bg-gradient-to-r from-slate-50 to-transparent border-l-4 border-slate-700 animate-slide-left delay-4">
+        <div class="mission-number bg-slate-700 text-white text-sm">
+         1
+        </div>
+        <p id="mission-1" class="text-slate-700 text-lg leading-relaxed pt-1">Menyelenggarakan Pendidikan tinggi bidang ilmu Farmasi dengan nilai-nilai Islam rahmatan lil'alamin dan beorientasi pada pengembangan pembangunan pedesaan.</p>
+       </div>
+       <div class="mission-item mission-card flex items-start gap-4 p-4 rounded-xl bg-gradient-to-r from-slate-50 to-transparent border-l-4 border-amber-500 animate-slide-left delay-5">
+        <div class="mission-number bg-amber-500 text-white text-sm">
+         2
+        </div>
+        <p id="mission-2" class="text-slate-700 text-lg leading-relaxed pt-1">Melaksanakan penelitian yang berbasis pada penemuan baru di bidang ilmu Farmasi.</p>
+       </div>
+       <div class="mission-item mission-card flex items-start gap-4 p-4 rounded-xl bg-gradient-to-r from-slate-50 to-transparent border-l-4 border-slate-700 animate-slide-left delay-6">
+        <div class="mission-number bg-slate-700 text-white text-sm">
+         3
+        </div>
+        <p id="mission-3" class="text-slate-700 text-lg leading-relaxed pt-1">Melaksanakan pengabdian kepada masyarakat dalam bidang Ilmu Farmasi yang berorientasi pada kearifan lokal dan pemberdayaan masyarakat.</p>
+       </div>
+       <div class="mission-item mission-card flex items-start gap-4 p-4 rounded-xl bg-gradient-to-r from-slate-50 to-transparent border-l-4 border-amber-500 animate-slide-left" style="animation-delay: 0.7s;">
+        <div class="mission-number bg-amber-500 text-white text-sm">
+         4
+        </div>
+        <p id="mission-4" class="text-slate-700 text-lg leading-relaxed pt-1">Menyelenggarakan penguatan tata kelola yang baik (*Good Governance*) pada program studi ilmu Farmasi, meningkatkan kualitas SDM dan sarana prasarana yang terstandar.</p>
+       </div>
+       <div class="mission-item mission-card flex items-start gap-4 p-4 rounded-xl bg-gradient-to-r from-slate-50 to-transparent border-l-4 border-slate-700 animate-slide-left" style="animation-delay: 0.8s;">
+        <div class="mission-number bg-slate-700 text-white text-sm">
+         5
+        </div>
+        <p id="mission-5" class="text-slate-700 text-lg leading-relaxed pt-1">Melaksanakan kerjasama dengan berbagai perguruan tinggi, pemerintah pusat daerah, dunia usaha dan industry, serta pemangku kepentingan lainnya.</p>
+       </div>
+      </div>
+     </div>
+    </section><!-- Footer Decoration -->
+    <footer class="mt-16 text-center animate-fade-up" style="animation-delay: 0.8s; opacity: 0;">
+     <div class="inline-flex items-center gap-4">
+      <div class="w-16 h-0.5 bg-gradient-to-r from-transparent via-slate-300 to-transparent"></div>
+      <svg class="w-6 h-6 text-amber-500" viewbox="0 0 24 24" fill="currentColor">
+       <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+      </svg>
+      <div class="w-16 h-0.5 bg-gradient-to-r from-transparent via-slate-300 to-transparent"></div>
+     </div>
+    </footer>
+   </div>
+  </div>
+  <script>
+    const defaultConfig = {
+      company_name: 'Nama Organisasi',
+      vision_title: 'Visi',
+      vision_text: 'Menjadi Program Studi yang unggul dan berdaya saing bidang ilmu Farmasi dalam pembangunan pedesaan berlandaskan nilai nilai Islam Rahmatan lilalamin tingkat ASEAN tahun 2034.',
+      mission_title: 'Misi',
+      mission_1: 'Mengembangkan sumber daya manusia yang kompeten, profesional, dan berintegritas tinggi.',
+      mission_2: 'Menciptakan inovasi dan solusi yang relevan dengan kebutuhan masyarakat modern.',
+      mission_3: 'Membangun kemitraan strategis dengan berbagai pihak untuk mencapai tujuan bersama.',
+      mission_4: 'Menerapkan prinsip keberlanjutan dalam setiap program dan kegiatan organisasi.',
+      mission_5: 'Meningkatkan transparansi dan akuntabilitas dalam setiap aspek kegiatan organisasi.',
+      background_color: '#f0f4f8',
+      surface_color: '#ffffff',
+      text_color: '#334155',
+      primary_color: '#1e3a5f',
+      accent_color: '#c9a959',
+      font_family: 'Playfair Display',
+      font_size: 18
+    };
+    
+    async function onConfigChange(config) {
+      // Update text content
+      document.getElementById('company-name').textContent = config.company_name || defaultConfig.company_name;
+      document.getElementById('vision-title').textContent = config.vision_title || defaultConfig.vision_title;
+      document.getElementById('vision-text').textContent = config.vision_text || defaultConfig.vision_text;
+      document.getElementById('mission-title').textContent = config.mission_title || defaultConfig.mission_title;
+      document.getElementById('mission-1').textContent = config.mission_1 || defaultConfig.mission_1;
+      document.getElementById('mission-2').textContent = config.mission_2 || defaultConfig.mission_2;
+      document.getElementById('mission-3').textContent = config.mission_3 || defaultConfig.mission_3;
+      document.getElementById('mission-4').textContent = config.mission_4 || defaultConfig.mission_4;
+      document.getElementById('mission-5').textContent = config.mission_5 || defaultConfig.mission_5;
+      
+      // Update colors
+      const bgColor = config.background_color || defaultConfig.background_color;
+      const surfaceColor = config.surface_color || defaultConfig.surface_color;
+      const textColor = config.text_color || defaultConfig.text_color;
+      const primaryColor = config.primary_color || defaultConfig.primary_color;
+      const accentColor = config.accent_color || defaultConfig.accent_color;
+      
+      // Background
+      document.getElementById('app-wrapper').style.background = `linear-gradient(135deg, ${bgColor} 0%, ${surfaceColor} 100%)`;
+      
+      // Vision card
+      const visionCard = document.querySelector('.vision-card');
+      if (visionCard) {
+        visionCard.style.background = `linear-gradient(145deg, ${surfaceColor} 0%, ${bgColor} 100%)`;
+        visionCard.querySelector('::before')?.style?.setProperty('background', `linear-gradient(90deg, ${primaryColor}, ${accentColor})`);
+      }
+      
+      // Mission cards background
+      document.querySelectorAll('.mission-card').forEach((card, index) => {
+        card.style.background = `linear-gradient(to right, ${surfaceColor}, transparent)`;
+        card.style.borderLeftColor = index % 2 === 0 ? primaryColor : accentColor;
+      });
+      
+      // Mission numbers
+      document.querySelectorAll('.mission-number').forEach((num, index) => {
+        num.style.backgroundColor = index % 2 === 0 ? primaryColor : accentColor;
+      });
+      
+      // Text colors
+      document.querySelectorAll('#vision-text, #mission-1, #mission-2, #mission-3, #mission-4').forEach(el => {
+        el.style.color = textColor;
+      });
+      
+      // Headings gradient
+      document.getElementById('company-name').style.background = `linear-gradient(135deg, ${primaryColor} 0%, ${accentColor} 100%)`;
+      document.getElementById('company-name').style.webkitBackgroundClip = 'text';
+      document.getElementById('company-name').style.webkitTextFillColor = 'transparent';
+      
+      // Icon containers
+      document.querySelectorAll('.vision-card .w-14').forEach(el => {
+        el.style.background = `linear-gradient(to bottom right, ${primaryColor}, ${textColor})`;
+      });
+      
+      // Accent icon container
+      const accentIconContainer = document.querySelector('section:last-of-type .w-14');
+      if (accentIconContainer) {
+        accentIconContainer.style.background = `linear-gradient(to bottom right, ${accentColor}, ${accentColor})`;
+      }
+      
+      // Font updates
+      const fontFamily = config.font_family || defaultConfig.font_family;
+      const fontSize = config.font_size || defaultConfig.font_size;
+      const baseFontStack = 'Georgia, serif';
+      const bodyFontStack = 'system-ui, sans-serif';
+      
+      document.getElementById('company-name').style.fontFamily = `${fontFamily}, ${baseFontStack}`;
+      document.getElementById('vision-title').style.fontFamily = `${fontFamily}, ${baseFontStack}`;
+      document.getElementById('mission-title').style.fontFamily = `${fontFamily}, ${baseFontStack}`;
+      
+      // Font size scaling
+      document.getElementById('company-name').style.fontSize = `${fontSize * 2.5}px`;
+      document.getElementById('vision-title').style.fontSize = `${fontSize * 1.5}px`;
+      document.getElementById('mission-title').style.fontSize = `${fontSize * 1.5}px`;
+      document.getElementById('vision-text').style.fontSize = `${fontSize * 1.1}px`;
+      document.querySelectorAll('#mission-1, #mission-2, #mission-3, #mission-4').forEach(el => {
+        el.style.fontSize = `${fontSize}px`;
+      });
+    }
+    
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              config.background_color = value;
+              window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () => config.surface_color || defaultConfig.surface_color,
+            set: (value) => {
+              config.surface_color = value;
+              window.elementSdk.setConfig({ surface_color: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => config.primary_color || defaultConfig.primary_color,
+            set: (value) => {
+              config.primary_color = value;
+              window.elementSdk.setConfig({ primary_color: value });
+            }
+          },
+          {
+            get: () => config.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              config.accent_color = value;
+              window.elementSdk.setConfig({ accent_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (value) => {
+            config.font_family = value;
+            window.elementSdk.setConfig({ font_family: value });
+          }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size,
+          set: (value) => {
+            config.font_size = value;
+            window.elementSdk.setConfig({ font_size: value });
+          }
+        }
+      };
+    }
+    
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ['company_name', config.company_name || defaultConfig.company_name],
+        ['vision_title', config.vision_title || defaultConfig.vision_title],
+        ['vision_text', config.vision_text || defaultConfig.vision_text],
+        ['mission_title', config.mission_title || defaultConfig.mission_title],
+        ['mission_1', config.mission_1 || defaultConfig.mission_1],
+        ['mission_2', config.mission_2 || defaultConfig.mission_2],
+        ['mission_3', config.mission_3 || defaultConfig.mission_3],
+        ['mission_4', config.mission_4 || defaultConfig.mission_4],
+        ['mission_5', config.mission_5 || defaultConfig.mission_5]
+      ]);
+    }
+    
+    // Initialize SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c8f3d51e7b69c2c',t:'MTc3MDI2MTI4Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c8f5c2a92c95f76',t:'MTc3MDI2MjU1MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
