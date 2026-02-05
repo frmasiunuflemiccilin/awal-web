@@ -9,4 +9,6 @@ function jawa2() {
   window.location.href = "test.html";
  }
 
- 
+ function farma() {
+  window.location.href = "pdf.html"
+ }
